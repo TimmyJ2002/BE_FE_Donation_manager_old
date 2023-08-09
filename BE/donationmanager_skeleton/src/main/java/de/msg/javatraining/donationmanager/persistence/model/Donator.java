@@ -33,4 +33,45 @@ public class Donator {
     )
     private List<Donation> donationList;
 
+    @NonNull
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAdditionalName() {
+        return additionalName;
+    }
+
+    public void setAdditionalName(String additionalName) {
+        this.additionalName = additionalName;
+    }
+
+    public String getMaidenName() {
+        return maidenName;
+    }
+
+    public void setMaidenName(String maidenName) {
+        this.maidenName = maidenName;
+    }
+
+    public void setFirstName(@NonNull String firstName) {
+        this.firstName = firstName;
+    }
+
+    @NonNull
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(@NonNull String lastName) {
+        this.lastName = lastName;
+    }
 }

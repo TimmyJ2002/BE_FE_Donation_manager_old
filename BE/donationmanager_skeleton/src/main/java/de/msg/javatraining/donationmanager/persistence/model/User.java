@@ -125,4 +125,42 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+	@NonNull
+	public String getFirstName() {
+		return firstName;
+	}
+
+	@NonNull
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public int getLoginCount() {
+		return loginCount;
+	}
+
+	public List<Campaign> getCampaigns() {
+		return campaigns;
+	}
+
+	public List<Donation> getDonationListCreated() {
+		return donationListCreated;
+	}
+
+	public List<Donation> getDonationListApproved() {
+		return donationListApproved;
+	}
+
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
 }
