@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface RoleRepositoryInterface {
   void saveRole(Role r);
   void deleteRole(Role r);
