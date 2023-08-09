@@ -1,20 +1,19 @@
 package de.msg.javatraining.donationmanager.persistence.repository.impl;
 
-import de.msg.javatraining.donationmanager.persistence.model.ERight;
 import de.msg.javatraining.donationmanager.persistence.model.ERole;
 import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
+import de.msg.javatraining.donationmanager.persistence.repository.RoleRepositoryInterface;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @Transactional
-public class RoleRepositoryImpl implements RoleRepository {
+public class RoleRepositoryInterfaceImpl implements RoleRepositoryInterface {
 
     @PersistenceContext
     private EntityManager em;
@@ -36,17 +35,9 @@ public class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public Role findByName(ERole name) {
-
-        return em.find(Role.class, name);
+        TypedQuery<Role> query = em.createQuery(
+                "SELECT r FROM Role r WHERE r.name = '" + name + "'", Role.class);
+        return query.getSingleResult();
     }
 
-    @Override
-    public void addRolePermission(ERole roleName, ERight rightName) {
-
-    }
-
-    @Override
-    public void removeRolePermission(ERole roleName, ERight rightName) {
-
-    }
 }

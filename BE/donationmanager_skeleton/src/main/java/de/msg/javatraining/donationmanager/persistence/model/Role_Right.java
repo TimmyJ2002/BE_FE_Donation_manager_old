@@ -3,7 +3,7 @@ package de.msg.javatraining.donationmanager.persistence.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="role-right")
+@Table(name="roleRight")
 public class Role_Right {
 
     @Id
@@ -24,5 +24,21 @@ public class Role_Right {
 
     public Long getId() {
         return id;
+    }
+
+    public ERight getRoleRight() {
+        return roleRight;
+    }
+
+    public void setRoleRight(ERight roleRight) {
+        this.roleRight = roleRight;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

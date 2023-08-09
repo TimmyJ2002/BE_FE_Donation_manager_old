@@ -1,35 +1,15 @@
-package de.msg.javatraining.donationmanager.persistence.model;
+package de.msg.javatraining.donationmanager.persistence.model.DTOs;
 
+import de.msg.javatraining.donationmanager.persistence.model.ERole;
+import de.msg.javatraining.donationmanager.persistence.model.Role_Right;
 import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
-@Table(name = "role")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RoleDTO {
     private Integer id;
-
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
     private ERole name;
-
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            mappedBy = "role"
-    )
     private List<Role_Right> roles;
-
-
-    public Role() {
-
-    }
-
-    public Role(ERole name) {
-        this.name = name;
-    }
 
     public Integer getId() {
         return id;

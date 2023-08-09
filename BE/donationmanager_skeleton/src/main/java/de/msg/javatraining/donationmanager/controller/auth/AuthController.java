@@ -2,8 +2,8 @@ package de.msg.javatraining.donationmanager.controller.auth;
 
 
 import de.msg.javatraining.donationmanager.config.security.JwtUtils;
-import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
+import de.msg.javatraining.donationmanager.persistence.repository.RoleRepositoryInterface;
+import de.msg.javatraining.donationmanager.persistence.repository.UserRepositoryInterface;
 import de.msg.javatraining.donationmanager.service.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +28,10 @@ public class AuthController {
   AuthenticationManager authenticationManager;
 
   @Autowired
-  UserRepository userRepository;
+  UserRepositoryInterface userRepositoryInterface;
 
   @Autowired
-  RoleRepository roleRepository;
+  RoleRepositoryInterface roleRepositoryInterface;
 
   @Autowired
   PasswordEncoder encoder;
