@@ -51,16 +51,11 @@ public class User {
 	private List<Role> roles;
 
 
-//	@ManyToMany(fetch = FetchType.EAGER)
-//	@JoinTable(	name = "user_campaign",
-//			joinColumns = @JoinColumn(name = "user_id"),
-//			inverseJoinColumns = @JoinColumn(name = "campaign_id"))
-	@ElementCollection
-	@CollectionTable(
-			name = "user_campaign",
-			joinColumns = @JoinColumn(name = "user_id"))
-	@Column(name = "campaign_id")
-	private List<Integer> campaigns;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(	name = "user_campaign",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "campaign_id"))
+	private List<Campaign> campaigns;
 
 	@OneToMany(
 			cascade = CascadeType.ALL,
