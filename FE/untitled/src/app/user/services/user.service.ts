@@ -8,31 +8,35 @@ import {AuthService} from "../../services/auth.service";
   providedIn: 'root'
 })
 export class UserService {
-  url:string="http://localhost:8080/getUsers";
-  url2:string="http://localhost:8080/user/update/";
+  url: string = "http://localhost:8080/getUsers";
+  url2: string = "http://localhost:8080/user/update/";
+  private createUserBE = "http://localhost:8080/users/save";
 
-  userList$:BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
-  userList:User[] = [
+  constructor(private http: HttpClient, private authService: AuthService) {
+  }
+
+  userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+
+  /*userList:User[] = [
     new User(1, 'user1', 'user_email1@yahoo.com', '1234'),
     new User(2, 'user2', 'user_email2@yahoo.com', '1234'),
     new User(3, 'user3', 'user_email3@yahoo.com', '1234')
-  ]
+  ]*/
 
   loadUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url).pipe(
-      tap(users => this.userList$.next(users))
+        tap(users => this.userList$.next(users))
     );
   }
 
-  getUsers():Observable<User[]>{
+  getUsers(): Observable<User[]> {
     return this.userList$.asObservable();
   }
 
-  updateUser(user:User):Observable<User>{
-    return this.http.put<User>(this.url2 + user.id, user);
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.createUserBE}`, user);
   }
-  constructor(private http: HttpClient, private authService: AuthService) {
-  }
+
 
 
 }
