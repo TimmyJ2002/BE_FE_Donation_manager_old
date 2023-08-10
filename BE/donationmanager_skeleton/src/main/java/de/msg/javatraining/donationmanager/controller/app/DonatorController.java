@@ -15,7 +15,7 @@ public class DonatorController {
     @Autowired
     private DonatorService donatorService;
     private final DonatorMapper donatorMapper = new DonatorMapper();
-    @GetMapping("/donator")
+    @GetMapping("/donator/edit")
     public List<DonatorDTO> findAll() {
         List<Donator> donators = donatorService.findAll();
         return donators.stream()

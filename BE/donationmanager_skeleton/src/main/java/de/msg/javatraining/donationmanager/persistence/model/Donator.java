@@ -1,6 +1,7 @@
 package de.msg.javatraining.donationmanager.persistence.model;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
@@ -12,12 +13,12 @@ public class Donator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="firstname")
-    @NonNull
+    @Column(name="firstname", nullable = false)
+    @NotNull
     private String firstName;
 
-    @Column(name="lastname")
-    @NonNull
+    @Column(name="lastname", nullable = false)
+    @NotNull
     private String lastName;
 
     @Column(name="additionalname")

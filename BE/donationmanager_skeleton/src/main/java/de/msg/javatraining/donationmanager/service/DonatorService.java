@@ -2,8 +2,10 @@ package de.msg.javatraining.donationmanager.service;
 
 import de.msg.javatraining.donationmanager.persistence.model.Donator;
 import de.msg.javatraining.donationmanager.persistence.repository.impl.DonatorRepositoryImpl;
+import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.UnexpectedRollbackException;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +17,13 @@ public class DonatorService {
     private DonatorRepositoryImpl donatorRepository;
 
     public void saveDonator(Donator d){
-        donatorRepository.saveDonator(d);
+        try {
+            donatorRepository.saveDonator(d);
+        }
+        catch(UnexpectedRollbackException e){
+            //adaug la tabela de log
+            e.printStackTrace();
+        }
     }
     public List<Donator> findAll(){
         List<Donator> d = donatorRepository.findAll();

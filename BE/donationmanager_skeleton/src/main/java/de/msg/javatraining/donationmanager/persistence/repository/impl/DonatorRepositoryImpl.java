@@ -5,7 +5,9 @@ import de.msg.javatraining.donationmanager.persistence.repository.DonatorReposit
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.hibernate.PropertyValueException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.UnexpectedRollbackException;
 
 import java.util.List;
 @Repository
@@ -16,7 +18,14 @@ public class DonatorRepositoryImpl implements DonatorRepository {
     private EntityManager em;
     @Override
     public void saveDonator(Donator u) {
-        em.persist(u);
+        try {
+            em.persist(u);
+        }
+        catch (PropertyValueException e)
+        {
+            //adaug la tabela de log
+            e.printStackTrace();
+        }
     }
 
     @Override

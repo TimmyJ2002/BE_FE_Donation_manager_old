@@ -10,6 +10,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {CreateDonatorComponent} from "./donator/components/createDonator/createdonator.component";
+import { DonatorRoutingModule } from './donator/donator-routing.module';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 
 
@@ -30,6 +31,7 @@ import {CreateDonatorComponent} from "./donator/components/createDonator/created
     RouterOutlet,
     RouterModule,
     HttpClientModule,
+    DonatorRoutingModule,
   ],
   exports: [
     RouterModule,
