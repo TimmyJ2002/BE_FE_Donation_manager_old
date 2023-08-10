@@ -31,4 +31,9 @@ export class AuthService {
   clearAccessToken(): void {
     localStorage.removeItem('accessToken');
   }
+
+  addCampaign(campaignData: any): Observable<any> {
+    return this.http.post(this.apiUrl, campaignData);
+  }
+
 }

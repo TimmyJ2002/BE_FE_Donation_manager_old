@@ -9,7 +9,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-import { CampaignComponent } from './components/campaign/campaign.component';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 
 
@@ -17,7 +16,6 @@ import { CampaignComponent } from './components/campaign/campaign.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    CampaignComponent,
     // UserDetailsComponent,
   ],
   imports: [
@@ -27,12 +25,9 @@ import { CampaignComponent } from './components/campaign/campaign.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterOutlet,
-    RouterModule,
     HttpClientModule,
   ],
   exports: [
-    RouterModule,
     // UserDetailsComponent
   ],
   providers: [],
