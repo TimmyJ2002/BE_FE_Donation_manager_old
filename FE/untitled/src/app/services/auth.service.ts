@@ -14,6 +14,11 @@ export class AuthService {
 
   }
 
+  isAuthenticated(): boolean {
+    const accessToken = localStorage.getItem('accessToken');
+    return !!accessToken; // Return true if an access token exists, false otherwise
+  }
+
   login(credentials: any): Observable<any> {
     // return this.http.post<any>(this.apiUrl + "/auth/login", credentials)
     return this.http.post<any>(this.apiUrl + "/auth/login", credentials, { withCredentials: true })
@@ -55,5 +60,25 @@ export class AuthService {
     const params = { userId: userId.toString(), newLoginCount: newLoginCount.toString() };
 
     return this.http.put(url, null, { params });
+  }
+
+  // logout(): Observable<any> {
+  //   return this.http.post(this.apiUrl + '/auth/logout', {}, { responseType: 'text' }); // Specify 'text' as responseType
+  // }
+
+  // logout(): Observable<any> {
+  //   const username = 'admin'; // Modify this based on how you extract the username from the token
+  //   return this.http.post(this.apiUrl + '/auth/logout', { username }, { responseType: 'text' });
+  // }
+
+  logout(): Observable<any> {
+    const token = localStorage.getItem('auth_token'); // Get the token from your storage (localStorage, sessionStorage, etc.)
+    const username = 'admin'; // Modify this based on how you extract the username from the token
+
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+
+    return this.http.post(`${this.apiUrl}/auth/logout`, { username }, { headers, responseType: 'text' });
   }
 }

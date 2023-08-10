@@ -89,4 +89,22 @@ public class AuthController {
     return ResponseEntity.ok("{\"message\": \"Login count updated successfully\"}");
   }
 
+  @PostMapping("/logout")
+  public ResponseEntity<String> logout(@RequestHeader("Authorization") String authorizationHeader) {
+    System.out.println("Received Authorization header: " + authorizationHeader);
+
+    // Extract token from Authorization header
+    String token = authorizationHeader.substring("Bearer ".length());
+    System.out.println("Extracted Token: " + token);
+
+    SecurityContextHolder.clearContext();
+
+    // Invalidate the token
+    jwtUtils.revokeToken(token);
+
+    System.out.println(jwtUtils.revokedTokens);
+    return ResponseEntity.ok("{\"message\": \"Logged out successfully\"}");
+  }
+
+
 }

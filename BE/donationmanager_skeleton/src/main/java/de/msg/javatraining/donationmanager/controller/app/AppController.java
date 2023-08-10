@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
 	
 	@GetMapping("/user")
-	//@PreAuthorize("hasRole('USER')  or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER')  or hasRole('ADMIN')")
 	public String userAccess() {
 		return "User Here.";
 	}
