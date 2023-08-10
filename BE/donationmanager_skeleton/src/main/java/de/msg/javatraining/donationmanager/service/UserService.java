@@ -1,13 +1,16 @@
 package de.msg.javatraining.donationmanager.service;
 
+import de.msg.javatraining.donationmanager.config.security.WebSecurityConfig;
 import de.msg.javatraining.donationmanager.persistence.model.DTOs.UserDTO;
 import de.msg.javatraining.donationmanager.persistence.model.User;
 import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
+import jdk.jshell.spi.ExecutionControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static de.msg.javatraining.donationmanager.persistence.model.DTOs.UserMapper.mapUserDTOToUser;
@@ -17,6 +20,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    WebSecurityConfig webSecurityConfig;
 
 
 
@@ -77,5 +83,33 @@ public class UserService {
 
     private void validateUserInput(UserDTO userDTO) {
 
+    }
+    //TODO: implement method
+    private boolean checkPassword(Long userId, String password){
+        return true;
+    }
+
+    public int changeUserPassword(User user, String newPassword) throws Exception {
+        Long userId = user.getId();
+        String userPassword = user.getPassword();
+
+        boolean checkUserPassword = checkPassword(userId, userPassword);
+
+        if(checkUserPassword) {
+            userRepository.changeUserPassword(webSecurityConfig.passwordEncoder().encode(newPassword));
+            return 1;
+        }
+        return 0;
+    }
+
+    public void updateLoginCount(Long userId, int newLoginCount) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setLoginCount(newLoginCount);
+            userRepository.save(user);
+        } else {
+            System.out.println("FAILED TO UPDATE LOGINCOUNT!");
+        }
     }
 }
