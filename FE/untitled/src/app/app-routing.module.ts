@@ -3,7 +3,6 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {CreateDonatorComponent} from "./donator/components/createDonator/createdonator.component";
 
-
 const routes: Routes = [
   { path: 'donator/create', component: CreateDonatorComponent },
   { path: 'donator/edit', component: CreateDonatorComponent },

@@ -31,7 +31,6 @@ import { DonatorRoutingModule } from './donator/donator-routing.module';
     RouterOutlet,
     RouterModule,
     HttpClientModule,
-    DonatorRoutingModule,
   ],
   exports: [
     RouterModule,
