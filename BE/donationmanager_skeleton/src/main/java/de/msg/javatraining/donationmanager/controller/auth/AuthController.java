@@ -49,7 +49,7 @@ public class AuthController {
     SecurityContextHolder.getContext().setAuthentication(authentication);
 
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-
+    System.out.println(userDetails.getUsername() + " " + userDetails.getEmail());
     String jwt = jwtUtils.generateJwtToken(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())

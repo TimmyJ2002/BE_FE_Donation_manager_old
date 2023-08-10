@@ -29,6 +29,7 @@ public class Campaign {
             orphanRemoval = true,
             mappedBy = "campaign"
     )
+
     private List<Donation> donationList;
 
     public Campaign() {

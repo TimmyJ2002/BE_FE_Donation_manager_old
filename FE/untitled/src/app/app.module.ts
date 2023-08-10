@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule} from "@angular/core";
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import { CampaignComponent } from './components/campaign/campaign.component';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 
 
@@ -16,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     AppComponent,
     LoginComponent,
+    CampaignComponent,
     // UserDetailsComponent,
   ],
   imports: [
