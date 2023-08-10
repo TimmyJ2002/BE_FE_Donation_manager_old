@@ -1,4 +1,5 @@
-/*package de.msg.javatraining.donationmanager.service;
+/*
+package de.msg.javatraining.donationmanager.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,4 +20,5 @@ public class MailService {
 
         javaMailSender.send(mailMessage);
     }
-}*/
+}
+*/

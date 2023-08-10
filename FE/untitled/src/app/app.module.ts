@@ -9,11 +9,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-import {UserChangePasswordComponent} from "./user/components/user-change-password/user-change-password.component";
-import {UserCreationComponent} from "./user/components/user-creation/user-creation.component";
 import {UserModule} from "./user/user/user.module";
-// import { UserDetailsComponent } from './user/components/user-details/user-details.component';
-
 
 @NgModule({
   declarations: [
