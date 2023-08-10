@@ -19,7 +19,7 @@ export class AuthService {
     return this.http.post<any>(this.apiUrl + "/auth/login", credentials, { withCredentials: true })
       .pipe(
         tap((response: any) => {
-          if (response.loginCount === -1) {
+          if (response.message == "Password change required") {
             // Redirect to password change page
             // Replace 'change-password' with your actual route
             window.location.href = '/change-password';
@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   updateUserLoginCount(userId: number, newLoginCount: number): Observable<any> {
-    const url = `${this.apiUrl}/update-login-count`; // Replace with your actual endpoint
+    const url = `${this.apiUrl}/auth/update-login-count`; // Replace with your actual endpoint
     const params = { userId: userId.toString(), newLoginCount: newLoginCount.toString() };
 
     return this.http.put(url, null, { params });

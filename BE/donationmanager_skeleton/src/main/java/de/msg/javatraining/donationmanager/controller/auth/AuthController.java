@@ -42,51 +42,6 @@ public class AuthController {
   @Autowired
   UserService userService;
 
-
-//  @PostMapping("/login")
-//  public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-//
-//    Authentication authentication = authenticationManager
-//        .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-//
-//    SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-//
-//    String jwt = jwtUtils.generateJwtToken(userDetails);
-//
-//    List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-//        .collect(Collectors.toList());
-//
-//
-//    return ResponseEntity.ok(new SignInResponse(jwt, userDetails.getId(),
-//        userDetails.getUsername(), userDetails.getEmail(), roles));
-//  }
-
-//  @PostMapping("/login")
-//  public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-//    Authentication authentication = authenticationManager
-//            .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-//
-//    SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-//
-//    // Check if logincount is -1
-//    if (userDetails.getLoginCount() == -1) {
-//      // Redirect logic here, for example, return a custom response
-//      return ResponseEntity.badRequest().body("Password change required");
-//    }
-//
-//    String jwt = jwtUtils.generateJwtToken(userDetails);
-//
-//    List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-//            .collect(Collectors.toList());
-//
-//    return ResponseEntity.ok(new SignInResponse(jwt, userDetails.getId(),
-//            userDetails.getUsername(), userDetails.getEmail(), userDetails.getLoginCount(), roles));
-//  }
-
   @PostMapping("/login")
   public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
     Authentication authentication = authenticationManager
@@ -98,7 +53,7 @@ public class AuthController {
 
     if (userDetails.getLoginCount() == -1) {
       return ResponseEntity.status(HttpStatus.OK)
-              .body("{\"message\": \"Password change required\", \"loginCount\": -1}");
+              .body("{\"message\": \"Password change required\"}");
     }
 
     String jwt = jwtUtils.generateJwtToken(userDetails);
@@ -125,26 +80,13 @@ public class AuthController {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"Password change failed\"}");
   }
 
-//  @PutMapping("/update-login-count")
-//  public ResponseEntity<?> updateLoginCount(@RequestBody UpdateLoginCountRequest request) {
-//    Long userId = request.getUserId();
-//    int newLoginCount = request.getNewLoginCount();
-//
-//    // Update the loginCount for the user with the provided userId
-//
-//    // Return a response indicating success or error
-//    return ResponseEntity.ok("Login count updated successfully");
-//  }
-
   @PutMapping("/update-login-count")
   public ResponseEntity<String> updateLoginCount(
           @RequestParam Long userId,
           @RequestParam int newLoginCount
   ) {
     userService.updateLoginCount(userId, newLoginCount);
-    return ResponseEntity.ok("Login count updated successfully");
+    return ResponseEntity.ok("{\"message\": \"Login count updated successfully\"}");
   }
-
-
 
 }

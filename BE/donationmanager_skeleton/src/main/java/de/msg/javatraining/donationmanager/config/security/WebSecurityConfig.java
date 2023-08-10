@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
@@ -37,17 +38,17 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS)) // we don't want sessions
                 //TODO: we need a filter before UsernamePasswordAuthenticationFilter.class
-                .authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//                .cors(cors -> {
-//                    cors.configurationSource(request -> {
-//                        CorsConfiguration corsConfiguration = new CorsConfiguration();
-//                        corsConfiguration.addAllowedOrigin("http://localhost:4200"); // Replace with your frontend origin
-//                        corsConfiguration.addAllowedHeader("*");
-//                        corsConfiguration.addAllowedMethod("*");
-//                        corsConfiguration.setAllowCredentials(true);
-//                        return corsConfiguration;
-//                    });
-//                });
+                .authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .cors(cors -> {
+                    cors.configurationSource(request -> {
+                        CorsConfiguration corsConfiguration = new CorsConfiguration();
+                        corsConfiguration.addAllowedOrigin("http://localhost:4200"); // Replace with your frontend origin
+                        corsConfiguration.addAllowedHeader("*");
+                        corsConfiguration.addAllowedMethod("*");
+                        corsConfiguration.setAllowCredentials(true);
+                        return corsConfiguration;
+                    });
+                });
         return http.build();
     }
 
