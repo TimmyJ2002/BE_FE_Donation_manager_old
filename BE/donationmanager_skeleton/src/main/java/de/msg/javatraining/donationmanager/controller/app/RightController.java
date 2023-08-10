@@ -28,11 +28,7 @@ public class RightController {
 
     @PostMapping("roles/remove")
     public void removeRoleRight(@RequestBody RequestWrapper requestWrapper) {
-        Role_Right rr = new Role_Right();
-        rr.setRoleRight(requestWrapper.getRoleRight());
-        rr.setRole(roleRightManagementService.findByID(requestWrapper.getRoleID()));
-
-        roleRightManagementService.removeRight(rr);
+        roleRightManagementService.removeRight(requestWrapper.getRoleID(), requestWrapper.getRoleRight());
     }
 
 }

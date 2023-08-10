@@ -25,9 +25,8 @@ public class RoleRightManagementService {
         roleRightRepo.saveRoleRight(rr);
     }
 
-    public void removeRight(Role_Right rr) {
-        rr.setId(18L);
-        roleRightRepo.deleteRoleRight(rr);
+    public void removeRight(int roleID, ERight right) {
+        roleRightRepo.deleteRoleRight(roleID, right);
     }
 
     public Role findByID(int roleID) {
@@ -39,6 +38,10 @@ public class RoleRightManagementService {
             default:
                 return roleRepo.findByName(ROLE_REP);
         }
+    }
+
+    public Role_Right findRoleRightByRoleAndRight(Role role, ERight right) {
+        return roleRightRepo.findByRoleAndRight(role, right);
     }
 
 }

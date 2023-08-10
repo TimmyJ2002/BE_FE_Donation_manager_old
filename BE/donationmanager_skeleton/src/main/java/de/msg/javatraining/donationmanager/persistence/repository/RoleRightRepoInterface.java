@@ -10,9 +10,9 @@ import java.util.List;
 public interface RoleRightRepoInterface {
 
     void saveRoleRight(Role_Right rr);
-    void deleteRoleRight(Role_Right rr);
+    void deleteRoleRight(int roleID, ERight right);
     List<Role_Right> findAll();
 
-    Role_Right findByRoleAndRight
+    Role_Right findByRoleAndRight(Role role, ERight right);
 
 }
