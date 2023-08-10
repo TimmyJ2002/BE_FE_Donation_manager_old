@@ -62,7 +62,7 @@ nav a:last-child {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #555}
+.dropdown-content a:hover {background-color: #ff5722}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -71,5 +71,5 @@ nav a:last-child {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #555;
+  background-color: #ff5722;
 }

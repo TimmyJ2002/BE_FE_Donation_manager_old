@@ -26,12 +26,13 @@ public class CampaignRepositoryImpl implements CampaignRepository {
     }
 
     @Override
+    public void update(Campaign campaign) {
+
+    }
+
+    @Override
     public List<Campaign> findAll() {
         return entityManager.createQuery("SELECT c FROM Campaign c", Campaign.class).getResultList();
     }
 
-    @Override
-    public Campaign findById(int id) {
-        return entityManager.find(Campaign.class, id);
-    }
 }

@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -26,11 +25,6 @@ public class CampaignController {
         return campaigns.stream()
                 .map(campaignConverter::campaignToDto)
                 .collect(Collectors.toList());
-    }
-
-    @GetMapping("/campaign/{id}")
-    public Optional<Campaign> findById(@PathVariable("id") int id) {
-        return campaignService.findById(id);
     }
 
     @PostMapping("/campaign/create")
@@ -51,4 +45,11 @@ public class CampaignController {
 //    @DeleteMapping("/campaign/{id}")
 //    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {}
 
+    //@GetMapping("/donator/edit")
+    //    public List<DonatorDTO> findAll() {
+    //        List<Donator> donators = donatorService.findAll();
+    //        return donators.stream()
+    //                .map(donatorMapper::donatorToDto)
+    //                .collect(Collectors.toList());
+    //    }
 }

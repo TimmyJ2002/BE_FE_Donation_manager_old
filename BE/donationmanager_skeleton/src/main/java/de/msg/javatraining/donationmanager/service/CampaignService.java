@@ -19,9 +19,9 @@ public class CampaignService {
         return campaigns;
     }
 
-    public Optional<Campaign> findById(int id) {
-        return Optional.ofNullable(campaignRepository.findById(id));
-    }
+//    public Optional<Campaign> findById(int id) {
+//        return Optional.ofNullable(campaignRepository.findById(id));
+//    }
 
     public void create(Campaign campaign) {
         campaignRepository.create(campaign);

@@ -10,6 +10,6 @@ import java.util.List;
 public interface CampaignRepository {
     void create(Campaign campaign);
     void delete(Campaign campaign);
+    void update(Campaign campaign);
     List<Campaign> findAll();
-    Campaign findById(int id);
 }

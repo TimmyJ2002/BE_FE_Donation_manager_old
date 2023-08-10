@@ -4,9 +4,9 @@ import {NgModule} from "@angular/core";
 
 
 const routes: Routes = [
+  { path: 'campaign', loadChildren: () => import('./campaign/campaign/campaign.module').then(m => m.CampaignModule) },
   { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: '**', redirectTo: 'login', pathMatch: 'full'},
-  { path: 'campaign', loadChildren: () => import('./campaign/campaign/campaign.module').then(m => m.CampaignModule) }
+  { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
