@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user";
 import {UserService} from "../../services/user.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
@@ -24,11 +24,19 @@ export class UserCreationComponent implements OnInit{
 
   private initUserForm(): void{
     this.userForm = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      mobileNumber: ['']
-      // TODO:roles and other things i need to add later
+      firstName: ['', [
+        Validators.required,
+        Validators.maxLength(50), // Change the length limit as needed
+        Validators.pattern(/^[a-zA-Z\s]*$/) // Allows only alphabetic characters and spaces
+      ]],
+      lastName: ['', [
+        Validators.required,
+        Validators.maxLength(50), // Change the length limit as needed
+        Validators.pattern(/^[a-zA-Z\s]*$/) // Allows only alphabetic characters and spaces
+      ]],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
+      mobileNumber: ['', [Validators.required, Validators.pattern(/^(00407\d{8}|07\d{8}|\+407\d{8})$/)]]
+      // TODO:roles and other things i need to add later + Validators
     });
   }
 

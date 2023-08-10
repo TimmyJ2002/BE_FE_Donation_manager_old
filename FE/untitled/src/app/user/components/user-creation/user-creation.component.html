@@ -19,5 +19,6 @@
   <input type="mobileNumber" id="mobileNumber" formControlName="mobileNumber" />
   </div>
 
-  <button type="submit">Create new User</button>
+  <p>Complete the form to enable button</p>
+  <button type="submit" [disabled]=!userForm.valid>Create new User</button>
 </form>
