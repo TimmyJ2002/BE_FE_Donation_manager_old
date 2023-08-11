@@ -32,4 +32,7 @@ public class DonatorService {
     public Optional<Donator> findById(int id) {
         return Optional.ofNullable(donatorRepository.findByID(id));
     }
+    public void editDonator(int id, Donator d){
+        donatorRepository.editDonator(id,d);
+    }
 }

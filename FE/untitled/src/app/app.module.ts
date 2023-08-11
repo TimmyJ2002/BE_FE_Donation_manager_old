@@ -11,6 +11,8 @@ import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {CreateDonatorComponent} from "./donator/components/createDonator/createdonator.component";
 import { DonatorRoutingModule } from './donator/donator-routing.module';
+import { DonatorListComponent } from './donator/components/donator-list/donator-list.component';
+import { EditDonatorComponent } from './donator/components/edit-donator/edit-donator.component';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 
 
@@ -18,7 +20,9 @@ import { DonatorRoutingModule } from './donator/donator-routing.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateDonatorComponent
+    CreateDonatorComponent,
+    DonatorListComponent,
+    EditDonatorComponent
     // UserDetailsComponent,
   ],
   imports: [

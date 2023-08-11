@@ -9,6 +9,7 @@ import {CreateDonatorService} from "../../services/createdonator.service";
   styleUrls: ['./createdonator.component.css']
 })
 export class CreateDonatorComponent implements OnInit{
+  isSuccess: boolean = false;
   donorForm= this.fb.group(
     {
       firstName: ['', Validators.required],
@@ -18,7 +19,7 @@ export class CreateDonatorComponent implements OnInit{
     });
   constructor(private fb: FormBuilder,
               private donatorService: CreateDonatorService) { }
-  onSubmit(){
+  onSubmit() {
     if (this.donorForm.valid) {
       const formData = this.donorForm.value;
       //console.log(formData)
@@ -32,8 +33,13 @@ export class CreateDonatorComponent implements OnInit{
           // Handle the error as needed
         }
       );
+      this.isSuccess = true;
+      this.donorForm.reset();
     }
   }
+    clearSuccessMessage(){
+      this.isSuccess = false;
+    }
 
 
   ngOnInit(): void {

@@ -43,5 +43,21 @@ public class DonatorRepositoryImpl implements DonatorRepository {
         return em.find(Donator.class, DonatorID);
     }
 
+    @Override
+    public void editDonator(int id, Donator d){
+        Donator existingDonator = em.find(Donator.class, id);
 
+        if (existingDonator != null) {
+            if(!d.getFirstName().equals(""))
+                existingDonator.setFirstName(d.getFirstName());
+            if(!d.getLastName().equals(""))
+                existingDonator.setLastName(d.getLastName());
+            if(!d.getAdditionalName().equals(""))
+                existingDonator.setAdditionalName(d.getAdditionalName());
+            if(!d.getMaidenName().equals(""))
+                existingDonator.setMaidenName(d.getMaidenName());
+            em.merge(existingDonator);
+        }
+    }
 }
+

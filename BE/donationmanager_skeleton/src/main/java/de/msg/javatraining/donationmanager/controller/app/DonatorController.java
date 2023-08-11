@@ -8,6 +8,7 @@ import de.msg.javatraining.donationmanager.service.DonatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -21,6 +22,14 @@ public class DonatorController {
         return donators.stream()
                 .map(donatorMapper::donatorToDto)
                 .collect(Collectors.toList());
+    }
+    @GetMapping("/donator/edit/{id}")
+    public Optional<Donator> findbyId(@PathVariable  int id) {
+        return donatorService.findById(id);
+    }
+    @PostMapping("/donator/edit/{id}")
+    public void editDonator(@PathVariable  int id, @RequestBody Donator c){
+        donatorService.editDonator(id,c);
     }
     @PostMapping("/donator/create")
     public void createDonator(@RequestBody Donator c){

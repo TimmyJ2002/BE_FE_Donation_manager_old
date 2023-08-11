@@ -9,4 +9,6 @@ public interface DonatorRepository {
     void deleteDonator(Donator u);
     List<Donator> findAll();
     Donator findByID(int DonatorID);
+
+    void editDonator(int id, Donator d);
 }
