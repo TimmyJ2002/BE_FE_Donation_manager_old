@@ -96,6 +96,6 @@ this.userService.createUser(user).subscribe(
 matcher = new MyErrorStateMatcher();*/
 
   toppings = new FormControl('');
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  toppingList: string[] = ['Administrator', 'Manager', 'Cenzor', 'Reporter'];
 
 }
