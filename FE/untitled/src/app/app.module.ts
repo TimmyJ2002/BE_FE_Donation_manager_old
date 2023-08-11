@@ -9,14 +9,17 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-// import { UserDetailsComponent } from './user/components/user-details/user-details.component';
+import { PermissionManagementComponent } from './components/permission_management/components/permission-management/permission-management.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatListModule} from "@angular/material/list";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    // UserDetailsComponent,
+    PermissionManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,10 +31,12 @@ import {HttpClientModule} from "@angular/common/http";
     RouterOutlet,
     RouterModule,
     HttpClientModule,
+    MatTableModule,
+    MatListModule,
+    MatButtonModule,
   ],
   exports: [
     RouterModule,
-    // UserDetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

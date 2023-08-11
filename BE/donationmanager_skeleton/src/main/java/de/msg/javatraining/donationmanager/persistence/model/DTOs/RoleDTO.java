@@ -9,7 +9,7 @@ import java.util.List;
 public class RoleDTO {
     private Integer id;
     private ERole name;
-    private List<Role_Right> roles;
+    private List<Role_Right> rights;
 
     public Integer getId() {
         return id;
@@ -27,11 +27,11 @@ public class RoleDTO {
         this.name = name;
     }
 
-    public List<Role_Right> getRoles() {
-        return roles;
+    public List<Role_Right> getRights() {
+        return rights;
     }
 
-    public void setRoles(List<Role_Right> roles) {
-        this.roles = roles;
+    public void setRights(List<Role_Right> rights) {
+        this.rights = rights;
     }
 }

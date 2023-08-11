@@ -1,0 +1,7 @@
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.role-row-is-clicked {
+  background-color: lightgreen;
+}

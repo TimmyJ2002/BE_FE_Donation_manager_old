@@ -6,9 +6,12 @@ import de.msg.javatraining.donationmanager.persistence.model.Role_Right;
 import de.msg.javatraining.donationmanager.service.RoleRightManagementService;
 import de.msg.javatraining.donationmanager.utils.RequestWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class RightController {
@@ -16,8 +19,16 @@ public class RightController {
     @Autowired
     RoleRightManagementService roleRightManagementService;
 
-    @PostMapping("roles/add")
+    @GetMapping("roles")
+    public List<Role> findAllRoles() {return roleRightManagementService.findAllRoles();}
+
+    @GetMapping("roles/rights")
+    public List<Role_Right> findAllRoleRights() {return roleRightManagementService.findAllRoleRights();}
+
+    @PostMapping("roles/addRight")
     public void addRoleRight(@RequestBody RequestWrapper requestWrapper) {
+
+        System.out.println("altceva");
 
         Role_Right rr = new Role_Right();
         rr.setRoleRight(requestWrapper.getRoleRight());
@@ -26,8 +37,11 @@ public class RightController {
         roleRightManagementService.addRight(rr);
     }
 
-    @PostMapping("roles/remove")
+    @PostMapping("roles/removeRight")
     public void removeRoleRight(@RequestBody RequestWrapper requestWrapper) {
+
+        System.out.println("cevanustiu");
+
         roleRightManagementService.removeRight(requestWrapper.getRoleID(), requestWrapper.getRoleRight());
     }
 

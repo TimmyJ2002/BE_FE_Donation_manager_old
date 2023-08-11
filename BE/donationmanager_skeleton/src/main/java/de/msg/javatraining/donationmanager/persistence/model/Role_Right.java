@@ -1,5 +1,7 @@
 package de.msg.javatraining.donationmanager.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class Role_Right {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="role_id")
+    @JsonBackReference
     private Role role;
 
     public void setId(Long id) {

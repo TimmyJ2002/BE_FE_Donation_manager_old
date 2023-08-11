@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static de.msg.javatraining.donationmanager.persistence.model.ERole.*;
 
 @Service
@@ -44,4 +46,11 @@ public class RoleRightManagementService {
         return roleRightRepo.findByRoleAndRight(role, right);
     }
 
+    public List<Role> findAllRoles() {
+        return roleRepo.findAll();
+    }
+
+    public List<Role_Right> findAllRoleRights() {
+        return roleRightRepo.findAll();
+    }
 }
