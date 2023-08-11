@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {User} from "../model/user";
 import {AuthService} from "../../services/auth.service";
 
@@ -34,9 +34,20 @@ export class UserService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.createUserBE}`, user);
+    return this.http.post<User>(`${this.createUserBE}`, user).pipe(
+      catchError((error) => {
+        let errorMessage = 'An error occurred';
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 500) {
+            errorMessage = 'Duplicate entry. This user already exists.';
+          } else {
+            errorMessage = `HTTP Error: ${error.status}`;
+          }
+        }
+        return throwError(errorMessage);
+      })
+    );
+
   }
-
-
 
 }

@@ -10,6 +10,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {UserModule} from "./user/user/user.module";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {UserModule} from "./user/user/user.module";
     RouterOutlet,
     RouterModule,
     HttpClientModule,
-    UserModule
+    UserModule,
+    MatSlideToggleModule
   ],
   exports: [
     RouterModule,
