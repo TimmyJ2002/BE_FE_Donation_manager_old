@@ -9,6 +9,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import {CreateDonatorComponent} from "./donator/components/createDonator/createdonator.component";
+import { DonatorRoutingModule } from './donator/donator-routing.module';
+import { DonatorListComponent } from './donator/components/donator-list/donator-list.component';
+import { EditDonatorComponent } from './donator/components/edit-donator/edit-donator.component';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 
 
@@ -16,6 +20,9 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     AppComponent,
     LoginComponent,
+    CreateDonatorComponent,
+    DonatorListComponent,
+    EditDonatorComponent
     // UserDetailsComponent,
   ],
   imports: [
