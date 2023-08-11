@@ -9,6 +9,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import {UserModule} from "./user/user/user.module";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {CreateDonatorComponent} from "./donator/components/createDonator/createdonator.component";
 import { DonatorRoutingModule } from './donator/donator-routing.module';
 import { DonatorListComponent } from './donator/components/donator-list/donator-list.component';
@@ -35,6 +37,8 @@ import { EditDonatorComponent } from './donator/components/edit-donator/edit-don
     RouterOutlet,
     RouterModule,
     HttpClientModule,
+    UserModule,
+    MatSlideToggleModule
   ],
   exports: [
     RouterModule,

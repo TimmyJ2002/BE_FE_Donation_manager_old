@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit{
     this.userService.loadUsers().subscribe();
     this.userService.getUsers().subscribe((users) => this.userList = users);
   }
-
+/*
   editUser(userToEdit: User) {
     userToEdit.username = ((userToEdit.username) + 1).toString();
 
@@ -30,6 +30,5 @@ export class UserListComponent implements OnInit{
         console.error('Error updating user:', error);
       }
     );
-  }
-
+  }*/
 }
