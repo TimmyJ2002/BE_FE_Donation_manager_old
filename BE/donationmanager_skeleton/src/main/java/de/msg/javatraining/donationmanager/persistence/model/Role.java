@@ -22,7 +22,6 @@ public class Role {
     )
     private List<Role_Right> roles;
 
-
     public Role() {
 
     }

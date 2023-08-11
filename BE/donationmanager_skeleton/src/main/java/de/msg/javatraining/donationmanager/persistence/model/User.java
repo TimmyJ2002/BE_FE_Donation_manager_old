@@ -1,7 +1,5 @@
 package de.msg.javatraining.donationmanager.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
@@ -10,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-
 @Table(	name = "user",
 		uniqueConstraints = {
 				@UniqueConstraint(columnNames = "username"),
