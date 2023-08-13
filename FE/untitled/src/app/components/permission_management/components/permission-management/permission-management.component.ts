@@ -47,11 +47,11 @@ export class PermissionManagementComponent implements OnInit {
     var exists = false;
     this.selectedRole?.rights.forEach((right) => {
       if (!this.selectedRights.includes(right.roleRight)) {
-        console.log('ceva')
         this.permissionManagementService.removeRight(this.selectedRole?.id, right.roleRight).subscribe();
       }
     })
     this.selectedRights.forEach((right) => {
+      exists = false;
       if (this.selectedRole?.rights) {
         this.selectedRole.rights.forEach((existingRoleRight) => {
           if (right == existingRoleRight.roleRight) exists = true;
@@ -68,4 +68,5 @@ export class PermissionManagementComponent implements OnInit {
 
   constructor(private permissionManagementService: PermissionManagementService) { }
 
+  protected readonly screenLeft = screenLeft;
 }

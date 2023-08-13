@@ -1,4 +1,5 @@
-<table mat-table [dataSource]="rolesList" #rolesTable class="roles_table">
+<div id="roles_table_div">
+<table mat-table [dataSource]="rolesList" #rolesTable id="roles_table">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Role ID </th>
@@ -19,13 +20,15 @@
   ></tr>
 
 </table>
-
-<mat-selection-list #rights
+</div>
+<div id="rights_div">
+<mat-selection-list #rights id="rights"
   [(ngModel)]="selectedRights"
   (ngModelChange)="onNgModelChange()"
   disabled="{{!selected}}">
   <mat-list-option *ngFor="let right of possibleRights" [value]="right">
     {{right}}</mat-list-option>
 </mat-selection-list>
+</div>
 
 <button mat-stroked-button disabled="{{!selected}}" (click)="saveRights()">Save</button>
