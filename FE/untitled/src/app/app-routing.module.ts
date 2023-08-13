@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {
   PermissionManagementRoutingModule
-} from "./components/permission_management/permission-management-routing/permission-management-routing.module";
+} from "./components/permission_management/permission-management-routing.module";
 
 
 const routes: Routes = [
