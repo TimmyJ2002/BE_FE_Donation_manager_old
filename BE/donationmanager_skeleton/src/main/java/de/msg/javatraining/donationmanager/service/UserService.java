@@ -2,16 +2,19 @@ package de.msg.javatraining.donationmanager.service;
 
 import de.msg.javatraining.donationmanager.config.security.WebSecurityConfig;
 import de.msg.javatraining.donationmanager.persistence.model.DTOs.UserDTO;
+import de.msg.javatraining.donationmanager.persistence.model.Role;
 import de.msg.javatraining.donationmanager.persistence.model.User;
 import de.msg.javatraining.donationmanager.persistence.repository.UserRepositoryInterface;
+import de.msg.javatraining.donationmanager.persistence.repository.impl.RoleRepositoryInterfaceImpl;
 import jdk.jshell.spi.ExecutionControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import de.msg.javatraining.donationmanager.persistence.model.ERole;
 
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static de.msg.javatraining.donationmanager.persistence.model.DTOs.UserMapper.mapUserDTOToUser;
 
@@ -23,6 +26,9 @@ public class UserService {
 
     @Autowired
     WebSecurityConfig webSecurityConfig;
+
+    @Autowired
+    private RoleRepositoryInterfaceImpl roleRepositoryInterface;
 
 
 
@@ -49,12 +55,31 @@ public class UserService {
         user.setLoginCount(0);
         user.setActive(true);
 
+        List<Role> roles = processRoles(userDTO.getRoles());
+        user.setRoles(roles);
 
 
 
         return userRepository.save(user);
     }
 
+
+    // inside methods
+    private List<Role> processRoles(String[] roleNames) {
+        List<Role> roles = new ArrayList<>();
+        for (String roleName : roleNames) {
+            try {
+                ERole eRole = ERole.valueOf(roleName); // Convert roleName to ERole enum
+                Role role = roleRepositoryInterface.findByName(eRole); // Find Role by ERole enum
+                if (role != null) {
+                    roles.add(role);
+                }
+            } catch (IllegalArgumentException e) {
+                // Handle invalid role name
+            }
+        }
+        return roles;
+    }
 
 
     private String generateInitialPassword() {
