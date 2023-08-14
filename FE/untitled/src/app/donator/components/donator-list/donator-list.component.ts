@@ -27,14 +27,10 @@ export class DonatorListComponent implements OnInit{
   }
 
   selectDonator(donator: Donator): void {
-    console.log(donator.id)
     this.selectedDonator = donator; // Store the selected donator's information
   }
   navigateToEditDonator(donor: Donator): void {
     this.donator = donor;
-    console.log(donor.id);
-    console.log(donor.firstName);
-    console.log(donor.lastName);
     this.router.navigate(['donator/edit', donor.id]);
   }
 
