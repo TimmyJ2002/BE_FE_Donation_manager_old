@@ -35,17 +35,17 @@ export class AuthService {
 
   // Save the accessToken to localStorage
   saveAccessToken(accessToken: string): void {
-    localStorage.setItem('accessToken', accessToken);
+    sessionStorage.setItem('accessToken', accessToken);
   }
 
   // Retrieve the accessToken from localStorage
   getAccessToken(): string | null {
-    return localStorage.getItem('accessToken');
+    return sessionStorage.getItem('accessToken');
   }
 
   // Clear the accessToken from localStorage on logout
   clearAccessToken(): void {
-    localStorage.removeItem('accessToken');
+    sessionStorage.removeItem('accessToken');
   }
 
   changePassword(userId: number, newPassword: string): Observable<any> {
