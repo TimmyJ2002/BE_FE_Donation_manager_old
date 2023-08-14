@@ -24,7 +24,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     CreateDonatorComponent,
     DonatorListComponent,
-    EditDonatorComponent
+    EditDonatorComponent,
     UserChangePasswordComponent,
     LogoutComponent,
     // UserDetailsComponent,
