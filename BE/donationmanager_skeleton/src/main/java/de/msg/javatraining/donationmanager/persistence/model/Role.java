@@ -24,7 +24,6 @@ public class Role {
     )
     private List<Role_Right> rights;
 
-
     public Role() {
 
     }
