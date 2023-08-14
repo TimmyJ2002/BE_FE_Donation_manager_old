@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,23 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'untitled';
 
-  ngOnInit(): void {
+  isLoggedIn: boolean = false;
+
+  constructor(private authService: AuthService) {
+    this.isLoggedIn = this.authService.isAuthenticated();
+  }
+
+  logout() {
+    this.authService.logout().subscribe(
+      () => {
+        this.isLoggedIn = false;
+        console.log('Logged out successfully');
+      },
+      (error) => {
+        console.error('Error logging out:', error);
+      }
+    );
+  }
+ngOnInit(): void {
   }
 }

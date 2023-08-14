@@ -10,7 +10,6 @@ import {CreateDonatorComponent} from "./components/createDonator/createdonator.c
 
 @NgModule({
   declarations: [
-    CreateDonatorComponent
   ],
   imports: [
     CommonModule,

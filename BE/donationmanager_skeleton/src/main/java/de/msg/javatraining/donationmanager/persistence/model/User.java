@@ -1,5 +1,7 @@
 package de.msg.javatraining.donationmanager.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+
 @Table(	name = "user",
 		uniqueConstraints = {
 				@UniqueConstraint(columnNames = "username"),
@@ -148,63 +151,85 @@ public class User {
 		return firstName;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setFirstName(@NonNull String firstName) {
 		this.firstName = firstName;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	@NonNull
 	public String getLastName() {
 		return lastName;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setLastName(@NonNull String lastName) {
 		this.lastName = lastName;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	public boolean isActive() {
 		return isActive;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setActive(boolean active) {
 		isActive = active;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	public int getLoginCount() {
 		return loginCount;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setLoginCount(int loginCount) {
 		this.loginCount = loginCount;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	public List<Campaign> getCampaigns() {
 		return campaigns;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setCampaigns(List<Campaign> campaigns) {
 		this.campaigns = campaigns;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	public List<Donation> getDonationListCreated() {
 		return donationListCreated;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setDonationListCreated(List<Donation> donationListCreated) {
 		this.donationListCreated = donationListCreated;
 	}
 
+=========
+>>>>>>>>> Temporary merge branch 2
 	public List<Donation> getDonationListApproved() {
 		return donationListApproved;
 	}
 
+<<<<<<<<< Temporary merge branch 1
 	public void setDonationListApproved(List<Donation> donationListApproved) {
 		this.donationListApproved = donationListApproved;
 	}
@@ -218,4 +243,9 @@ public class User {
 	}
 
 
+=========
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+>>>>>>>>> Temporary merge branch 2
 }

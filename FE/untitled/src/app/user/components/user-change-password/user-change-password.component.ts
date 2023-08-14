@@ -17,28 +17,6 @@ export class UserChangePasswordComponent implements OnInit{
       passwordConfirm: ['']
     });
   }
-  // onSubmit() {
-  //   const newPassword = this.changePasswordForm.value.password;
-  //   const passwordConfirm = this.changePasswordForm.value.passwordConfirm;
-  //   const userId = 1; // Replace with the actual user's ID
-  //
-  //   if (newPassword !== passwordConfirm) {
-  //     // Passwords don't match, show error or handle accordingly
-  //     alert("Passwords don't match!")
-  //     return;
-  //   }
-  //
-  //   this.authService.changePassword(userId, newPassword).subscribe(
-  //     (respone) => {
-  //       console.log('Password changed successfully', respone.message);
-  //       // Handle success (e.g., show a success message, navigate to a new page, etc.)
-  //     },
-  //     (error) => {
-  //       console.error('Error changing password:', error);
-  //       // Handle error (e.g., show an error message, handle specific errors, etc.)
-  //     }
-  //   );
-  // }
 
   onSubmit() {
     const newPassword = this.changePasswordForm.value.password;
