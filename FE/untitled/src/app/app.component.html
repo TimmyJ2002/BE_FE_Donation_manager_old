@@ -1,14 +1,16 @@
-<!--<nav>-->
-<!--&lt;!&ndash;  <a routerLink="/users" routerLinkActive="active" ariaCurrentWhenActive="page">Users</a>&ndash;&gt;-->
-<!--&lt;!&ndash;  <a routerLink="/donations" routerLinkActive="active" ariaCurrentWhenActive="page">Donations</a>&ndash;&gt;-->
-<!--&lt;!&ndash;  <a routerLink="/change-password" routerLinkActive="active" ariaCurrentWhenActive="page">Change Password</a>&ndash;&gt;-->
-<!--  <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>-->
-<!--</nav>-->
-<!--<router-outlet></router-outlet>-->
 <nav>
   <a *ngIf="isLoggedIn; else loginLink" (click)="logout()" aria-current="page">Logout</a>
   <ng-template #loginLink>
     <a routerLink="/login" routerLinkActive="active" aria-current="page">Login</a>
   </ng-template>
+  <a routerLink="/rights" routerLinkActive="active" ariaCurrentWhenActive="page">Rights</a>
+  <div class="dropdown">
+    <a routerLink="/donator/create" routerLinkActive="active" ariaCurrentWhenActive="page">Donor</a>
+    <div class="dropdown-content">
+      <a routerLink="/donator/create" routerLinkActive="active" ariaCurrentWhenActive="page">Create</a>
+      <a routerLink="/donator/edit" routerLinkActive="active" ariaCurrentWhenActive="page">Edit</a>
+      <a routerLink="/donator/delete" routerLinkActive="active" ariaCurrentWhenActive="page">Delete</a>
+    </div>
+  </div>
 </nav>
 <router-outlet></router-outlet>

@@ -2,9 +2,9 @@ package de.msg.javatraining.donationmanager.controller.auth;
 
 
 import de.msg.javatraining.donationmanager.config.security.JwtUtils;
+import de.msg.javatraining.donationmanager.persistence.repository.RoleRepositoryInterface;
+import de.msg.javatraining.donationmanager.persistence.repository.UserRepositoryInterface;
 import de.msg.javatraining.donationmanager.persistence.model.User;
-import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
 import de.msg.javatraining.donationmanager.service.UserDetailsImpl;
 import de.msg.javatraining.donationmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +28,10 @@ public class AuthController {
   AuthenticationManager authenticationManager;
 
   @Autowired
-  UserRepository userRepository;
+  UserRepositoryInterface userRepositoryInterface;
 
   @Autowired
-  RoleRepository roleRepository;
+  RoleRepositoryInterface roleRepositoryInterface;
 
   @Autowired
   PasswordEncoder encoder;
@@ -55,11 +55,10 @@ public class AuthController {
       return ResponseEntity.status(HttpStatus.OK)
               .body("{\"message\": \"Password change required\"}");
     }
-
     String jwt = jwtUtils.generateJwtToken(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-            .collect(Collectors.toList());
+        .collect(Collectors.toList());
 
     return ResponseEntity.ok(new SignInResponse(jwt, userDetails.getId(),
             userDetails.getUsername(), userDetails.getEmail(), userDetails.getLoginCount(), roles));
