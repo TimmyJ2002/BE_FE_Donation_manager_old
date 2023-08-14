@@ -1,5 +1,7 @@
 package de.msg.javatraining.donationmanager.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+
 @Table(	name = "user",
 		uniqueConstraints = {
 				@UniqueConstraint(columnNames = "username"),
@@ -86,6 +89,23 @@ public class User {
 		this.password = password;
 	}
 
+	public User(Long id, String username, String password, @NonNull String firstName, @NonNull String lastName, @NonNull String email, String mobileNumber, boolean isActive, int loginCount, List<Role> roles, List<Campaign> campaigns, List<Donation> donationListCreated, List<Donation> donationListApproved, List<Notification> notifications) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+		this.isActive = isActive;
+		this.loginCount = loginCount;
+		this.roles = roles;
+		this.campaigns = campaigns;
+		this.donationListCreated = donationListCreated;
+		this.donationListApproved = donationListApproved;
+		this.notifications = notifications;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -125,4 +145,80 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+	@NonNull
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(@NonNull String firstName) {
+		this.firstName = firstName;
+	}
+
+	@NonNull
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(@NonNull String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean active) {
+		isActive = active;
+	}
+
+	public int getLoginCount() {
+		return loginCount;
+	}
+
+	public void setLoginCount(int loginCount) {
+		this.loginCount = loginCount;
+	}
+
+	public List<Campaign> getCampaigns() {
+		return campaigns;
+	}
+
+	public void setCampaigns(List<Campaign> campaigns) {
+		this.campaigns = campaigns;
+	}
+
+	public List<Donation> getDonationListCreated() {
+		return donationListCreated;
+	}
+
+	public void setDonationListCreated(List<Donation> donationListCreated) {
+		this.donationListCreated = donationListCreated;
+	}
+
+	public List<Donation> getDonationListApproved() {
+		return donationListApproved;
+	}
+
+	public void setDonationListApproved(List<Donation> donationListApproved) {
+		this.donationListApproved = donationListApproved;
+	}
+
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
+	}
+
+
 }
