@@ -9,6 +9,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {UserRoutingModule} from "./user/user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import { UserChangePasswordComponent } from './user/components/user-change-password/user-change-password.component';
+import { LogoutComponent } from './components/logout/logout.component';
+// import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 import { PermissionManagementComponent } from './components/permission_management/components/permission-management/permission-management.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatListModule} from "@angular/material/list";
@@ -20,6 +23,9 @@ import {MatButtonModule} from "@angular/material/button";
     AppComponent,
     LoginComponent,
     PermissionManagementComponent,
+    UserChangePasswordComponent,
+    LogoutComponent,
+    // UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,7 @@ import {MatButtonModule} from "@angular/material/button";
   ],
   exports: [
     RouterModule,
+    // UserDetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

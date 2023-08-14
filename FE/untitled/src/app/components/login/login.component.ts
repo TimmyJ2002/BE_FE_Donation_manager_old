@@ -24,12 +24,14 @@ export class LoginComponent implements OnInit{
         const accessToken = response.accessToken;
         this.authService.saveAccessToken(accessToken); // Save the accessToken to localStorage
         console.log('Access Token:', accessToken);
+        this.loginForm.reset();
       },
       (error) => {
         console.error('Login Error:', error);
       }
     );
   }
+
 
   ngOnInit(): void {
   }
