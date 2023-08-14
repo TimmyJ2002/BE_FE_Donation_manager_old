@@ -37,6 +37,8 @@ public class RoleRightManagementService {
                 return roleRepo.findByName(ROLE_ADM);
             case 2:
                 return roleRepo.findByName(ROLE_MGN);
+            case 3:
+                return roleRepo.findByName(ROLE_CEN);
             default:
                 return roleRepo.findByName(ROLE_REP);
         }

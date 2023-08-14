@@ -20,7 +20,8 @@ public class RightController {
     RoleRightManagementService roleRightManagementService;
 
     @GetMapping("roles")
-    public List<Role> findAllRoles() {return roleRightManagementService.findAllRoles();}
+    public List<Role> findAllRoles() {
+        return roleRightManagementService.findAllRoles();}
 
     @GetMapping("roles/rights")
     public List<Role_Right> findAllRoleRights() {return roleRightManagementService.findAllRoleRights();}
@@ -29,10 +30,13 @@ public class RightController {
     public void addRoleRight(@RequestBody RequestWrapper requestWrapper) {
 
         System.out.println("altceva");
+        System.out.println(requestWrapper.getRoleID());
 
         Role_Right rr = new Role_Right();
         rr.setRoleRight(requestWrapper.getRoleRight());
         rr.setRole(roleRightManagementService.findByID(requestWrapper.getRoleID()));
+
+        System.out.println(rr.getRole().getId());
 
         roleRightManagementService.addRight(rr);
     }
@@ -41,6 +45,7 @@ public class RightController {
     public void removeRoleRight(@RequestBody RequestWrapper requestWrapper) {
 
         System.out.println("cevanustiu");
+        System.out.println(requestWrapper.getRoleID());
 
         roleRightManagementService.removeRight(requestWrapper.getRoleID(), requestWrapper.getRoleRight());
     }
