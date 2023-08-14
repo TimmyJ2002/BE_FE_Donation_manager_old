@@ -6,7 +6,7 @@ import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository
 import de.msg.javatraining.donationmanager.persistence.repository.UserRepositoryInterface;
 import de.msg.javatraining.donationmanager.persistence.model.User;
 import de.msg.javatraining.donationmanager.service.UserDetailsImpl;
-//import de.msg.javatraining.donationmanager.service.UserService;
+import de.msg.javatraining.donationmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
