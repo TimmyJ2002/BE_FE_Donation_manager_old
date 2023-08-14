@@ -9,7 +9,8 @@
   <a *ngIf="isLoggedIn; else loginLink" (click)="logout()" aria-current="page">Logout</a>
   <ng-template #loginLink>
     <a routerLink="/login" routerLinkActive="active" aria-current="page">Login</a>
-    <div class="dropdown">
+  </ng-template>
+  <div class="dropdown">
     <a routerLink="/donator/create" routerLinkActive="active" ariaCurrentWhenActive="page">Donor</a>
     <div class="dropdown-content">
       <a routerLink="/donator/create" routerLinkActive="active" ariaCurrentWhenActive="page">Create</a>
@@ -17,6 +18,5 @@
       <a routerLink="/donator/delete" routerLinkActive="active" ariaCurrentWhenActive="page">Delete</a>
     </div>
   </div>
-  </ng-template>
 </nav>
 <router-outlet></router-outlet>
