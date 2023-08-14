@@ -2,16 +2,11 @@ package de.msg.javatraining.donationmanager.controller.auth;
 
 
 import de.msg.javatraining.donationmanager.config.security.JwtUtils;
-<<<<<<< HEAD
 import de.msg.javatraining.donationmanager.persistence.repository.RoleRepositoryInterface;
 import de.msg.javatraining.donationmanager.persistence.repository.UserRepositoryInterface;
-=======
 import de.msg.javatraining.donationmanager.persistence.model.User;
-import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
->>>>>>> dev
 import de.msg.javatraining.donationmanager.service.UserDetailsImpl;
-import de.msg.javatraining.donationmanager.service.UserService;
+//import de.msg.javatraining.donationmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,11 +59,7 @@ public class AuthController {
     String jwt = jwtUtils.generateJwtToken(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-<<<<<<< HEAD
         .collect(Collectors.toList());
-=======
-            .collect(Collectors.toList());
->>>>>>> dev
 
     return ResponseEntity.ok(new SignInResponse(jwt, userDetails.getId(),
             userDetails.getUsername(), userDetails.getEmail(), userDetails.getLoginCount(), roles));
