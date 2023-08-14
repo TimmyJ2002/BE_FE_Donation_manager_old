@@ -13,6 +13,8 @@ import {CreateDonatorComponent} from "./donator/components/createDonator/created
 import { DonatorRoutingModule } from './donator/donator-routing.module';
 import { DonatorListComponent } from './donator/components/donator-list/donator-list.component';
 import { EditDonatorComponent } from './donator/components/edit-donator/edit-donator.component';
+import { UserChangePasswordComponent } from './user/components/user-change-password/user-change-password.component';
+import { LogoutComponent } from './components/logout/logout.component';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
 
 
@@ -23,6 +25,8 @@ import { EditDonatorComponent } from './donator/components/edit-donator/edit-don
     CreateDonatorComponent,
     DonatorListComponent,
     EditDonatorComponent
+    UserChangePasswordComponent,
+    LogoutComponent,
     // UserDetailsComponent,
   ],
   imports: [
