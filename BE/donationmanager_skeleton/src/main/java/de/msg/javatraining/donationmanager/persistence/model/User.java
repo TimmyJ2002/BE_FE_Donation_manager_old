@@ -154,7 +154,6 @@ public class User {
 	public void setFirstName(@NonNull String firstName) {
 		this.firstName = firstName;
 	}
-
 	@NonNull
 	public String getLastName() {
 		return lastName;
@@ -163,7 +162,6 @@ public class User {
 	public void setLastName(@NonNull String lastName) {
 		this.lastName = lastName;
 	}
-
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
@@ -171,11 +169,9 @@ public class User {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-
 	public boolean isActive() {
 		return isActive;
 	}
-
 	public void setActive(boolean active) {
 		isActive = active;
 	}
@@ -199,7 +195,6 @@ public class User {
 	public List<Donation> getDonationListCreated() {
 		return donationListCreated;
 	}
-
 	public void setDonationListCreated(List<Donation> donationListCreated) {
 		this.donationListCreated = donationListCreated;
 	}
@@ -219,6 +214,4 @@ public class User {
 	public void setNotifications(List<Notification> notifications) {
 		this.notifications = notifications;
 	}
-
-
 }

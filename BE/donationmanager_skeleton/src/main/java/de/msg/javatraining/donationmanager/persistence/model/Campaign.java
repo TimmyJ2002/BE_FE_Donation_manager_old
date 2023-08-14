@@ -31,4 +31,40 @@ public class Campaign {
     )
     private List<Donation> donationList;
 
+    public Campaign() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @NonNull
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(@NonNull String purpose) {
+        this.purpose = purpose;
+    }
+
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public List<Donation> getDonationList() {
+        return donationList;
+    }
+
+    public void setDonationList(List<Donation> donationList) {
+        this.donationList = donationList;
+    }
 }

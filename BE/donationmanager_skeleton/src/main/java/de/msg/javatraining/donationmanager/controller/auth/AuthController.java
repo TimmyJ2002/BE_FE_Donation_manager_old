@@ -55,7 +55,6 @@ public class AuthController {
       return ResponseEntity.status(HttpStatus.OK)
               .body("{\"message\": \"Password change required\"}");
     }
-
     String jwt = jwtUtils.generateJwtToken(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
