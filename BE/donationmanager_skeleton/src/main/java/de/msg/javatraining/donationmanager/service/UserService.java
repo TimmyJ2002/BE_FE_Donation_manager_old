@@ -3,7 +3,7 @@ package de.msg.javatraining.donationmanager.service;
 import de.msg.javatraining.donationmanager.config.security.WebSecurityConfig;
 import de.msg.javatraining.donationmanager.persistence.model.DTOs.UserDTO;
 import de.msg.javatraining.donationmanager.persistence.model.User;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
+import de.msg.javatraining.donationmanager.persistence.repository.UserRepositoryInterface;
 import jdk.jshell.spi.ExecutionControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,7 +19,7 @@ import static de.msg.javatraining.donationmanager.persistence.model.DTOs.UserMap
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryInterface userRepository;
 
     @Autowired
     WebSecurityConfig webSecurityConfig;
