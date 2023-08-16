@@ -86,6 +86,7 @@ public class Donator {
 
     public void setDonationList(List<Donation> donationList) {
         this.donationList = donationList;
+    }
 
     public boolean isActive() {
         return isActive;
@@ -103,4 +104,8 @@ public class Donator {
         this.setActive(false);
 
     }
+
+
 }
+
+

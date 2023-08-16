@@ -33,6 +33,7 @@ public class DonatorService {
 
     public Optional<Donator> findById(int id) {
         return Optional.ofNullable(donatorRepository.findByID(id));
+    }
 
     public Donator findById(long id) {
         return donatorRepository.findByID(id);

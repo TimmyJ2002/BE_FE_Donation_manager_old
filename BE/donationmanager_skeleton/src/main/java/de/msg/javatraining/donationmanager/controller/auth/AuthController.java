@@ -42,55 +42,9 @@ public class AuthController {
   @Autowired
   UserService userService;
 
-
-//  @PostMapping("/login")
-//  public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-//
-//    Authentication authentication = authenticationManager
-//        .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-//
-//    SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-//
-//    String jwt = jwtUtils.generateJwtToken(userDetails);
-//
-//    List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-//        .collect(Collectors.toList());
-//
-//
-//    return ResponseEntity.ok(new SignInResponse(jwt, userDetails.getId(),
-//        userDetails.getUsername(), userDetails.getEmail(), roles));
-//  }
-
-//  @PostMapping("/login")
-//  public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-//    Authentication authentication = authenticationManager
-//            .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-//
-//    SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-//
-//    // Check if logincount is -1
-//    if (userDetails.getLoginCount() == -1) {
-//      // Redirect logic here, for example, return a custom response
-//      return ResponseEntity.badRequest().body("Password change required");
-//    }
-//
-//    String jwt = jwtUtils.generateJwtToken(userDetails);
-//
-//    List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-//            .collect(Collectors.toList());
-//
-//    return ResponseEntity.ok(new SignInResponse(jwt, userDetails.getId(),
-//            userDetails.getUsername(), userDetails.getEmail(), userDetails.getLoginCount(), roles));
-//  }
-
   @PostMapping("/login")
   public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
     Authentication authentication = authenticationManager
-<<<<<<<<< Temporary merge branch 1
             .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -102,13 +56,8 @@ public class AuthController {
               .body("{\"message\": \"Password change required\", \"loginCount\": -1}");
     }
 
-=========
-        .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-    SecurityContextHolder.getContext().setAuthentication(authentication);
 
-    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
     System.out.println(userDetails.getUsername() + " " + userDetails.getEmail());
->>>>>>>>> Temporary merge branch 2
     String jwt = jwtUtils.generateJwtToken(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
@@ -133,16 +82,6 @@ public class AuthController {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"Password change failed\"}");
   }
 
-//  @PutMapping("/update-login-count")
-//  public ResponseEntity<?> updateLoginCount(@RequestBody UpdateLoginCountRequest request) {
-//    Long userId = request.getUserId();
-//    int newLoginCount = request.getNewLoginCount();
-//
-//    // Update the loginCount for the user with the provided userId
-//
-//    // Return a response indicating success or error
-//    return ResponseEntity.ok("Login count updated successfully");
-//  }
 
   @PutMapping("/update-login-count")
   public ResponseEntity<String> updateLoginCount(
@@ -153,6 +92,21 @@ public class AuthController {
     return ResponseEntity.ok("Login count updated successfully");
   }
 
+  @PostMapping("/logout")
+  public ResponseEntity<String> logout(@RequestHeader("Authorization") String authorizationHeader) {
+    System.out.println("Received Authorization header: " + authorizationHeader);
 
+    // Extract token from Authorization header
+    String token = authorizationHeader.substring("Bearer ".length());
+    System.out.println("Extracted Token: " + token);
+
+    SecurityContextHolder.clearContext();
+
+    // Invalidate the token
+    jwtUtils.revokeToken(token);
+
+    System.out.println(jwtUtils.revokedTokens);
+    return ResponseEntity.ok("{\"message\": \"Logged out successfully\"}");
+  }
 
 }

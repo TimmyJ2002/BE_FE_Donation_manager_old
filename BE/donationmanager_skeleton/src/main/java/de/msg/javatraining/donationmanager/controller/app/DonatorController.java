@@ -41,10 +41,10 @@ public class DonatorController {
                 .map(donatorMapper::donatorToDto)
                 .collect(Collectors.toList());
     }
-    @GetMapping("/donator/edit/{id}")
-    public Donator findbyId(@PathVariable  int id) {
-        return donatorService.findById(id);
-    }
+//    @GetMapping("/donator/edit/{id}")
+//    public Donator findbyId(@PathVariable  int id) {
+//        return donatorService.findById(id);
+//    }
 
 
 
@@ -57,9 +57,10 @@ public class DonatorController {
     public void createDonator(@RequestBody Donator c){
         donatorService.saveDonator(c);
     }
-    @PostMapping("/donator/delete")
-    public void deleteDonator(@RequestBody Donator c){
-        c = donatorService.findById(Math.toIntExact(c.getId()));
-        donatorService.specialDeleteDonator(c);
-    }
+
+//    @PostMapping("/donator/delete")
+//    public void deleteDonator(@RequestBody Donator c){
+//        c = donatorService.findById(Math.toIntExact(c.getId()));
+//        donatorService.specialDeleteDonator(c);
+//    }
 }

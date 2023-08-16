@@ -5,7 +5,7 @@ import {UserService} from "../../services/user.service";
 import {
   FormBuilder, FormControl,
   FormGroup, FormGroupDirective, NgForm,
-  Validators,
+  Validators
 } from '@angular/forms';
 import {ErrorStateMatcher} from "@angular/material/core";
 
