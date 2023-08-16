@@ -38,8 +38,8 @@ export class UserService {
       catchError((error) => {
         let errorMessage = 'An error occurred';
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 500) {
-            errorMessage = 'Duplicate entry. This user already exists.';
+          if (error.status === 409) {
+            errorMessage = 'Duplicate entry. A user with this email or phone Number already exists.';
           } else {
             errorMessage = `HTTP Error: ${error.status}`;
           }
