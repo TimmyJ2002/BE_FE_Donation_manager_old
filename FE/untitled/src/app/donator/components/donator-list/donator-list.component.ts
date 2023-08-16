@@ -17,7 +17,7 @@ export class DonatorListComponent implements OnInit{
               private router: Router) {}
 
   ngOnInit(): void {
-    this.loadDonors();
+    this.loadActiveDonors();
   }
 
   loadDonors(): void {
@@ -25,9 +25,10 @@ export class DonatorListComponent implements OnInit{
       this.donors = donors;
     });
   }
-
-  selectDonator(donator: Donator): void {
-    this.selectedDonator = donator; // Store the selected donator's information
+  loadActiveDonors(): void {
+    this.donorService.getDonors().subscribe(donors => {
+      this.donors = donors.filter(donator => donator.active); //nu stiu de ce nu merge cu isActive...ma rog, asa merge
+    });
   }
   navigateToEditDonator(donor: Donator): void {
     this.donator = donor;

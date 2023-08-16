@@ -13,6 +13,18 @@ import java.util.stream.Collectors;
 
 @RestController
 public class DonatorController {
+    class IdWrapper{
+        private int id;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
     @Autowired
     private DonatorService donatorService;
     private final DonatorMapper donatorMapper = new DonatorMapper();
@@ -24,7 +36,7 @@ public class DonatorController {
                 .collect(Collectors.toList());
     }
     @GetMapping("/donator/edit/{id}")
-    public Optional<Donator> findbyId(@PathVariable  int id) {
+    public Donator findbyId(@PathVariable  int id) {
         return donatorService.findById(id);
     }
     @PostMapping("/donator/edit/{id}")
@@ -34,5 +46,10 @@ public class DonatorController {
     @PostMapping("/donator/create")
     public void createDonator(@RequestBody Donator c){
         donatorService.saveDonator(c);
+    }
+    @PostMapping("/donator/delete")
+    public void deleteDonator(@RequestBody Donator c){
+        c = donatorService.findById(Math.toIntExact(c.getId()));
+        donatorService.specialDeleteDonator(c);
     }
 }

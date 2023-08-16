@@ -8,7 +8,9 @@ public interface DonatorRepository {
     void saveDonator(Donator u);
     void deleteDonator(Donator u);
     List<Donator> findAll();
-    Donator findByID(int DonatorID);
+    Donator findByID(long DonatorID);
 
-    void editDonator(int id, Donator d);
+    void editDonator(long id, Donator d);
+
+    void specialDeleteDonator(Donator d);
 }

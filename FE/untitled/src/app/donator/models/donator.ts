@@ -5,7 +5,8 @@ export class Donator{
     public firstName: string,
     public lastName:string,
     public additionalName: string,
-    public maidenName:string
+    public maidenName:string,
+    public isActive:boolean
   ) {
   }
 }

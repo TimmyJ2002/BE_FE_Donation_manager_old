@@ -14,6 +14,7 @@ public class DonatorMapper {
         u.setFirstName(dto.getFirstName());
         u.setMaidenName(dto.getMaidenName());
         u.setAdditionalName(dto.getAdditionalName());
+        u.setActive(dto.isActive());
         return u;
     }
 
@@ -24,6 +25,7 @@ public class DonatorMapper {
         dto.setLastName(u.getLastName());
         dto.setMaidenName(u.getMaidenName());
         dto.setAdditionalName(u.getAdditionalName());
+        dto.setActive(u.isActive());
         return dto;
     }
 
