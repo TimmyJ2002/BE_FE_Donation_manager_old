@@ -18,6 +18,7 @@ import {MatSelectModule} from "@angular/material/select";
     UserListComponent,
     UserCreationComponent,
     UserChangePasswordComponent
+
   ],
   imports: [
     CommonModule,
@@ -33,7 +34,6 @@ import {MatSelectModule} from "@angular/material/select";
   ],
   exports: [
     UserListComponent,
-    UserCreationComponent,
     UserChangePasswordComponent
   ]
 })

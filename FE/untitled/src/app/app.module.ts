@@ -22,6 +22,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatButtonModule} from "@angular/material/button";
 import { DeleteDonatorComponent } from './donator/components/delete-donator/delete-donator.component';
 import { DonationReportingComponent } from './donation/donation-reporting/donation-reporting.component';
+import {UserModule} from "./user/user/user.module";
+import {UserCreationComponent} from "./user/components/user-creation/user-creation.component";
 
 
 @NgModule({
@@ -32,10 +34,10 @@ import { DonationReportingComponent } from './donation/donation-reporting/donati
     CreateDonatorComponent,
     DonatorListComponent,
     EditDonatorComponent,
-    UserChangePasswordComponent,
     LogoutComponent,
     DeleteDonatorComponent,
-    DonationReportingComponent,
+    DonationReportingComponent
+
     // UserDetailsComponent,
   ],
   imports: [
