@@ -27,7 +27,8 @@ public class Campaign {
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            mappedBy = "campaign"
+            mappedBy = "campaign",
+            fetch = FetchType.EAGER
     )
     private List<Donation> donationList;
 

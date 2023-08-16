@@ -22,6 +22,10 @@ import {MatListModule} from "@angular/material/list";
 import {MatButtonModule} from "@angular/material/button";
 import {UserModule} from "./user/user/user.module";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DeleteDonatorComponent } from './donator/components/delete-donator/delete-donator.component';
+import { DonationReportingComponent } from './donation/donation-reporting/donation-reporting.component';
+import {UserCreationComponent} from "./user/components/user-creation/user-creation.component";
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     EditDonatorComponent,
     UserChangePasswordComponent,
     LogoutComponent,
-    // UserDetailsComponent,
+    DeleteDonatorComponent,
+    DonationReportingComponent
   ],
   imports: [
     BrowserModule,
@@ -47,11 +52,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     HttpClientModule,
     UserModule,
     MatSlideToggleModule,
+    MatTableModule,
     MatListModule,
     MatButtonModule,
-    MatTableModule,
-    MatTableModule,
-    MatListModule,
   ],
   exports: [
     RouterModule,

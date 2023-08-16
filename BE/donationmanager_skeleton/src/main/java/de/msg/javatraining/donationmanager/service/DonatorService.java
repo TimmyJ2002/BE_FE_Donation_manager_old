@@ -1,5 +1,6 @@
 package de.msg.javatraining.donationmanager.service;
 
+import de.msg.javatraining.donationmanager.persistence.model.Donation;
 import de.msg.javatraining.donationmanager.persistence.model.Donator;
 import de.msg.javatraining.donationmanager.persistence.repository.impl.DonatorRepositoryImpl;
 import org.hibernate.PropertyValueException;
@@ -21,7 +22,6 @@ public class DonatorService {
             donatorRepository.saveDonator(d);
         }
         catch(UnexpectedRollbackException e){
-            //adaug la tabela de log
             e.printStackTrace();
         }
     }
@@ -29,10 +29,21 @@ public class DonatorService {
         List<Donator> d = donatorRepository.findAll();
         return d;
     }
+
+
     public Optional<Donator> findById(int id) {
         return Optional.ofNullable(donatorRepository.findByID(id));
     }
-    public void editDonator(int id, Donator d){
+
+    public Donator findById(long id) {
+        return donatorRepository.findByID(id);
+
+    }
+    public void editDonator(long id, Donator d){
         donatorRepository.editDonator(id,d);
+    }
+
+    public void specialDeleteDonator(Donator d){
+        donatorRepository.specialDeleteDonator(d);
     }
 }
