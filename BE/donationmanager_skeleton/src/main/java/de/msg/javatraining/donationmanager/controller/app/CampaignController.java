@@ -27,29 +27,36 @@ public class CampaignController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/campaign/{id}")
+    public Campaign findById(@PathVariable Long id) {
+        return campaignService.findById(id);
+    }
+
     @PostMapping("/campaign/create")
-  //  @PreAuthorize("hasAuthority('CAMP_MANAGEMENT')")
-    public ResponseEntity<String> createCampaign(@RequestBody Campaign campaign) {
+    @ResponseBody
+    public ResponseEntity<?> createCampaign(@RequestBody Campaign campaign) {
         try {
-            campaignService.create(campaign);
-            return ResponseEntity.ok("Campaign added successfully.");
-        }
-        catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: Name already exists.");
+            Campaign createdCampaign = campaignService.create(campaign);
+            return new ResponseEntity<>(createdCampaign, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>("Campaign name already exists.", HttpStatus.BAD_REQUEST);
         }
     }
 
-//    @PutMapping("/campaign/{id}")
-//    public CampaignDto updateUserById(@PathVariable("id") Long id, @RequestBody Campaign updateCampaign) {}
+    @PostMapping("/campaign/update/{id}")
+    @ResponseBody
+    public ResponseEntity<?> updateCampaign(@PathVariable Long id, @RequestBody Campaign updateCampaign) {
+        try {
+            Campaign updatedCampaign = campaignService.update(id, updateCampaign);
+            return new ResponseEntity<>(updatedCampaign, HttpStatus.OK);
+        }
+        catch (IllegalArgumentException e) {
+            return new ResponseEntity<>("Campaign name already exists.", HttpStatus.BAD_REQUEST);
+        }
+    }
 
-//    @DeleteMapping("/campaign/{id}")
-//    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {}
-
-    //@GetMapping("/donator/edit")
-    //    public List<DonatorDTO> findAll() {
-    //        List<Donator> donators = donatorService.findAll();
-    //        return donators.stream()
-    //                .map(donatorMapper::donatorToDto)
-    //                .collect(Collectors.toList());
-    //    }
+    @DeleteMapping("/campaign/delete/{id}")
+    public void deleteCampaign(@PathVariable Long id, @RequestBody Campaign campaign) {
+        campaignService.delete(id, campaign);
+    }
 }

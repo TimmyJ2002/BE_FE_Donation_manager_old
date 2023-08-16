@@ -32,8 +32,4 @@ export class AuthService {
     localStorage.removeItem('accessToken');
   }
 
-  addCampaign(campaignData: any): Observable<any> {
-    return this.http.post(this.apiUrl, campaignData);
-  }
-
 }

@@ -2,14 +2,19 @@ package de.msg.javatraining.donationmanager.service;
 
 import de.msg.javatraining.donationmanager.persistence.model.Campaign;
 import de.msg.javatraining.donationmanager.persistence.repository.CampaignRepositoryImpl;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CampaignService {
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Autowired
     CampaignRepositoryImpl campaignRepository;
@@ -19,16 +24,22 @@ public class CampaignService {
         return campaigns;
     }
 
-//    public Optional<Campaign> findById(int id) {
-//        return Optional.ofNullable(campaignRepository.findById(id));
-//    }
-
-    public void create(Campaign campaign) {
-        campaignRepository.create(campaign);
+    public Campaign findById(Long id) {
+        return campaignRepository.findById(id);
     }
 
-//    public Campaign update(Long id, Campaign updateCampaign) {}
+    public Campaign create(Campaign campaign) {
+        campaignRepository.create(campaign);
+        return campaign;
+    }
 
-//    public void deleteById(Long id) {}
+    public Campaign update(Long id, Campaign updateCampaign) {
+        campaignRepository.update(id, updateCampaign);
+        return updateCampaign;
+    }
+
+    public void delete(Long id, Campaign campaign) {
+        campaignRepository.delete(campaign);
+    }
 
 }
