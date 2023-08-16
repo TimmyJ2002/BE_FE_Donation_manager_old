@@ -22,7 +22,6 @@ public class DonatorService {
             donatorRepository.saveDonator(d);
         }
         catch(UnexpectedRollbackException e){
-            //adaug la tabela de log
             e.printStackTrace();
         }
     }
@@ -31,10 +30,19 @@ public class DonatorService {
         return d;
     }
 
+
     public Optional<Donator> findById(int id) {
         return Optional.ofNullable(donatorRepository.findByID(id));
+
+    public Donator findById(long id) {
+        return donatorRepository.findByID(id);
+
     }
-    public void editDonator(int id, Donator d){
+    public void editDonator(long id, Donator d){
         donatorRepository.editDonator(id,d);
+    }
+
+    public void specialDeleteDonator(Donator d){
+        donatorRepository.specialDeleteDonator(d);
     }
 }

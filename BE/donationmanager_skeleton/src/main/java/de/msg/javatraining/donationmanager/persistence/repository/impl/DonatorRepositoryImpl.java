@@ -9,7 +9,6 @@ import jakarta.transaction.Transactional;
 import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.UnexpectedRollbackException;
 
 import java.util.List;
 @Repository
@@ -20,6 +19,7 @@ public class DonatorRepositoryImpl implements DonatorRepository {
 
     @Override
     public void saveDonator(Donator u) {
+        u.setActive(true);
         try {
             em.persist(u);
         }
@@ -41,25 +41,27 @@ public class DonatorRepositoryImpl implements DonatorRepository {
     }
 
     @Override
-    public Donator findByID(int DonatorID) {
+    public Donator findByID(long DonatorID) {
         return em.find(Donator.class, DonatorID);
     }
 
     @Override
-    public void editDonator(int id, Donator d){
+    public void editDonator(long id, Donator d){
         Donator existingDonator = em.find(Donator.class, id);
-
         if (existingDonator != null) {
-            if(!d.getFirstName().equals(""))
-                existingDonator.setFirstName(d.getFirstName());
-            if(!d.getLastName().equals(""))
-                existingDonator.setLastName(d.getLastName());
-            if(!d.getAdditionalName().equals(""))
-                existingDonator.setAdditionalName(d.getAdditionalName());
-            if(!d.getMaidenName().equals(""))
+                if (!d.getFirstName().equals(""))
+                    existingDonator.setFirstName(d.getFirstName());
+                if (!d.getLastName().equals(""))
+                    existingDonator.setLastName(d.getLastName());
                 existingDonator.setMaidenName(d.getMaidenName());
-            em.merge(existingDonator);
+                existingDonator.setAdditionalName(d.getAdditionalName());
+                em.merge(existingDonator);
         }
+    }
+    @Override
+    public void specialDeleteDonator(Donator d){
+            d.specialDelete();
+            em.merge(d);
     }
 }
 

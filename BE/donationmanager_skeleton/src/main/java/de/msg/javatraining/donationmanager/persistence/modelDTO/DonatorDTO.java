@@ -16,6 +16,8 @@ public class DonatorDTO {
     private String additionalName;
     private String maidenName;
 
+    private boolean isActive;
+
     public String getAdditionalName() {
         return additionalName;
     }
@@ -35,6 +37,14 @@ public class DonatorDTO {
 
     public DonatorDTO() {
         // Default constructor
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getFirstName() {

@@ -35,6 +35,9 @@ public class Donator {
     )
     private List<Donation> donationList;
 
+    @Column(name="isactive")
+    private boolean isActive;
+
     @NonNull
     public String getFirstName() {
         return firstName;
@@ -83,5 +86,21 @@ public class Donator {
 
     public void setDonationList(List<Donation> donationList) {
         this.donationList = donationList;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public void specialDelete(){
+        this.setFirstName("Unknown");
+        this.setLastName("Unknown");
+        this.setMaidenName("");
+        this.setAdditionalName("");
+        this.setActive(false);
+
     }
 }
