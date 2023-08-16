@@ -35,7 +35,6 @@ import {UserCreationComponent} from "./user/components/user-creation/user-creati
     CreateDonatorComponent,
     DonatorListComponent,
     EditDonatorComponent,
-    UserChangePasswordComponent,
     LogoutComponent,
     DeleteDonatorComponent,
     DonationReportingComponent
