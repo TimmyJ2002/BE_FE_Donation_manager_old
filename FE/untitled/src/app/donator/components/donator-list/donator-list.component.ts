@@ -23,6 +23,7 @@ export class DonatorListComponent implements OnInit{
   loadDonors(): void {
     this.donorService.getDonors().subscribe(donors => {
       this.donors = donors;
+      console.log(donors.length);
     });
   }
   loadActiveDonors(): void {
