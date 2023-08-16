@@ -1,5 +1,6 @@
 package de.msg.javatraining.donationmanager.service;
 
+import de.msg.javatraining.donationmanager.persistence.model.Donation;
 import de.msg.javatraining.donationmanager.persistence.model.Donator;
 import de.msg.javatraining.donationmanager.persistence.repository.impl.DonatorRepositoryImpl;
 import org.hibernate.PropertyValueException;
@@ -29,6 +30,7 @@ public class DonatorService {
         List<Donator> d = donatorRepository.findAll();
         return d;
     }
+
     public Optional<Donator> findById(int id) {
         return Optional.ofNullable(donatorRepository.findByID(id));
     }

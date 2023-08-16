@@ -5,6 +5,7 @@ import {PermissionManagementRoutingModule} from "./components/permission_managem
 import {CreateDonatorComponent} from "./donator/components/createDonator/createdonator.component";
 import {DonatorListComponent} from "./donator/components/donator-list/donator-list.component";
 import {EditDonatorComponent} from "./donator/components/edit-donator/edit-donator.component";
+import {DonationRoutingModule} from "./donation/donation-routing.module";
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'donator/edit/:id', component: EditDonatorComponent,  },
   { path: 'donator/delete', component: CreateDonatorComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: '**', redirectTo: 'login', pathMatch: 'full'}
+  // { path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -21,6 +22,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     PermissionManagementRoutingModule,
+    DonationRoutingModule,
     RouterModule.forRoot(routes),
   ],
   exports: [

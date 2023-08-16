@@ -30,7 +30,8 @@ public class Donator {
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            mappedBy = "donator"
+            mappedBy = "donator",
+            fetch = FetchType.EAGER
     )
     private List<Donation> donationList;
 
@@ -74,5 +75,13 @@ public class Donator {
 
     public void setLastName(@NonNull String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Donation> getDonationList() {
+        return donationList;
+    }
+
+    public void setDonationList(List<Donation> donationList) {
+        this.donationList = donationList;
     }
 }
