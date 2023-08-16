@@ -1,0 +1,33 @@
+<h2>Edit a Campaign</h2>
+<button class="listButton" (click)="loadCampaigns()"> See all campaigns </button>
+<div *ngIf="showTable">
+<table id="campaignTable">
+  <thead>
+  <tr>
+    <th id="nameH"> Name </th>
+    <th id="purposeH"> Purpose </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let campaign of campaigns" id="campaignRow" (dblclick)="toSeeCampaign(campaign)">
+    <td id="name"> {{campaign.name}} </td>
+    <td id="purpose"> {{campaign.purpose}} </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<form [formGroup]="campaignForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="newName"> New name: </label>
+    <input type="text" id="newName" formControlName="name">
+
+    <label for="newPurpose">New purpose:</label>
+    <input type="text" id="newPurpose" formControlName="purpose">
+  </div>
+  <p>Complete the form with the updates you want to make.</p>
+  <div *ngIf="isSuccess">Campaign successfully created!</div>
+  <div *ngIf="isDuplicate">Campaign already exists!</div>
+
+  <button class="editButton" mat-fab color="primary" type="submit" [disabled]="!campaignForm.valid">Edit Campaign</button>
+</form>
