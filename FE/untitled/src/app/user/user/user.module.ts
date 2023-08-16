@@ -34,6 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
   ],
   exports: [
     UserListComponent,
+    UserCreationComponent,
     UserChangePasswordComponent
   ]
 })

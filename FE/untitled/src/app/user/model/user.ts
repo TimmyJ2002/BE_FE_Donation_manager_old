@@ -7,4 +7,5 @@ export interface User {
   email: string;
   mobileNumber: string;
   isActive?: boolean;
+  roles: string[];
 }

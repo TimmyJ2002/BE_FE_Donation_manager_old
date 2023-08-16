@@ -20,9 +20,10 @@ import { PermissionManagementComponent } from './components/permission_managemen
 import {MatTableModule} from "@angular/material/table";
 import {MatListModule} from "@angular/material/list";
 import {MatButtonModule} from "@angular/material/button";
+import {UserModule} from "./user/user/user.module";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DeleteDonatorComponent } from './donator/components/delete-donator/delete-donator.component';
 import { DonationReportingComponent } from './donation/donation-reporting/donation-reporting.component';
-import {UserModule} from "./user/user/user.module";
 import {UserCreationComponent} from "./user/components/user-creation/user-creation.component";
 
 
@@ -37,8 +38,6 @@ import {UserCreationComponent} from "./user/components/user-creation/user-creati
     LogoutComponent,
     DeleteDonatorComponent,
     DonationReportingComponent
-
-    // UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +49,8 @@ import {UserCreationComponent} from "./user/components/user-creation/user-creati
     RouterOutlet,
     RouterModule,
     HttpClientModule,
+    UserModule,
+    MatSlideToggleModule,
     MatTableModule,
     MatListModule,
     MatButtonModule,
