@@ -22,7 +22,6 @@ export class CreateDonatorComponent implements OnInit{
   onSubmit() {
     if (this.donorForm.valid) {
       const formData = this.donorForm.value;
-      //console.log(formData)
       this.donatorService.addDonor(formData).subscribe(
         (response) => {
           console.log('Donor added successfully:', response);

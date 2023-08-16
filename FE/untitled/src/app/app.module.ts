@@ -20,6 +20,7 @@ import { PermissionManagementComponent } from './components/permission_managemen
 import {MatTableModule} from "@angular/material/table";
 import {MatListModule} from "@angular/material/list";
 import {MatButtonModule} from "@angular/material/button";
+import { DeleteDonatorComponent } from './donator/components/delete-donator/delete-donator.component';
 import { DonationReportingComponent } from './donation/donation-reporting/donation-reporting.component';
 
 
@@ -33,6 +34,7 @@ import { DonationReportingComponent } from './donation/donation-reporting/donati
     EditDonatorComponent,
     UserChangePasswordComponent,
     LogoutComponent,
+    DeleteDonatorComponent,
     DonationReportingComponent,
     // UserDetailsComponent,
   ],
