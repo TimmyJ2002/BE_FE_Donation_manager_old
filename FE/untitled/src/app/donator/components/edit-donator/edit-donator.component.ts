@@ -13,14 +13,16 @@ export class EditDonatorComponent implements OnInit {
   // @ts-ignore
   id: number;
   isSuccess: boolean = false;
+  missingFields: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private donatorService: CreateDonatorService,
               private router: Router) {
   }
 
-  donatorDetails: Donator = new Donator(BigInt(-1),"Firstname","Lastname","Additionalname","Maidenname");
+  donatorDetails: Donator = new Donator(BigInt(-1),"Firstname","Lastname","Additionalname","Maidenname", true);
   ngOnInit() {
+    this.missingFields = false;
     this.route.paramMap.subscribe(params => {
       // @ts-ignore
       const donorId = +params.get('id');
@@ -31,8 +33,13 @@ export class EditDonatorComponent implements OnInit {
     });
   }
   saveDonator(): void {
-    this.donatorService.saveDonator(this.donatorDetails);
-    this.isSuccess = true;
+    if (this.donatorDetails.firstName !== '' && this.donatorDetails.lastName !== '') {
+      this.donatorService.saveDonator(this.donatorDetails);
+      this.missingFields = false;
+      this.isSuccess = true;
+    } else {
+      this.missingFields = true;
+    }
   }
   navigateToEditDonator(): void {
     this.router.navigate(['/donator/edit']); // Navigate to the desired URL
