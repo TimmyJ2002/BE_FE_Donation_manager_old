@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       username: [''],
       password: ['']
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit{
         this.authService.saveAccessToken(accessToken); // Save the accessToken to localStorage
         console.log('Access Token:', accessToken);
         this.loginForm.reset();
+        this.router.navigate(['/rights']);
       },
       (error) => {
         console.error('Login Error:', error);

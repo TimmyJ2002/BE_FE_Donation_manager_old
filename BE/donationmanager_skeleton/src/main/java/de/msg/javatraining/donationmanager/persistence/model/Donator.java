@@ -30,9 +30,13 @@ public class Donator {
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            mappedBy = "donator"
+            mappedBy = "donator",
+            fetch = FetchType.EAGER
     )
     private List<Donation> donationList;
+
+    @Column(name="isactive")
+    private boolean isActive;
 
     @NonNull
     public String getFirstName() {
@@ -74,5 +78,29 @@ public class Donator {
 
     public void setLastName(@NonNull String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Donation> getDonationList() {
+        return donationList;
+    }
+
+    public void setDonationList(List<Donation> donationList) {
+        this.donationList = donationList;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public void specialDelete(){
+        this.setFirstName("Unknown");
+        this.setLastName("Unknown");
+        this.setMaidenName("");
+        this.setAdditionalName("");
+        this.setActive(false);
+
     }
 }

@@ -16,17 +16,24 @@ import { EditDonatorComponent } from './donator/components/edit-donator/edit-don
 import { UserChangePasswordComponent } from './user/components/user-change-password/user-change-password.component';
 import { LogoutComponent } from './components/logout/logout.component';
 // import { UserDetailsComponent } from './user/components/user-details/user-details.component';
+import { PermissionManagementComponent } from './components/permission_management/components/permission-management/permission-management.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatListModule} from "@angular/material/list";
+import {MatButtonModule} from "@angular/material/button";
+import { DonationReportingComponent } from './donation/donation-reporting/donation-reporting.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    PermissionManagementComponent,
     CreateDonatorComponent,
     DonatorListComponent,
     EditDonatorComponent,
     UserChangePasswordComponent,
     LogoutComponent,
+    DonationReportingComponent,
     // UserDetailsComponent,
   ],
   imports: [
@@ -39,6 +46,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     RouterOutlet,
     RouterModule,
     HttpClientModule,
+    MatTableModule,
+    MatListModule,
+    MatButtonModule,
   ],
   exports: [
     RouterModule,
