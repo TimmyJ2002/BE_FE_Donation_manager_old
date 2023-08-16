@@ -18,8 +18,14 @@
   <div>
   <label for="mobileNumber">Phone Number:</label>
   <input type="mobileNumber" id="mobileNumber" formControlName="mobileNumber" />
-
   </div>
+
+ <!-- <mat-form-field>
+    <mat-label>Roles</mat-label>
+    <mat-select [formControl]="rolesControl" multiple>
+      <mat-option *ngFor="let role of roleList" [value]="role">{{role}}</mat-option>
+    </mat-select>
+  </mat-form-field>-->
 
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
@@ -29,48 +35,17 @@
     {{ errorMessage }}
   </div>
 
+  <mat-form-field>
+    <mat-label>Roluri</mat-label>
+    <mat-select formControlName="roles" multiple >
+      <mat-option *ngFor="let role of rolesList" [value]="role.name">{{role.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <p>Complete the form to enable button</p>
   <button type="submit" [disabled]=!userForm.valid>Create new User</button>
 </form>
 
 
 
-<mat-form-field>
-  <mat-label>Rulouri</mat-label>
-  <mat-select [formControl]="toppings" multiple>
-    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<!--<div>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-           placeholder="Ex. pat@example.com">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  </form>
-</div>-->
-<!--
-<div>
-<mat-form-field class="example-full-width">
-  <mat-label>Phone Number</mat-label>
-  <input type="phoneNumber" matInput [formControl]="phoneNumberControl" [errorStateMatcher]="matcher"
-         placeholder="Ex. 0712123123">
-  <mat-hint>Errors appear instantly!</mat-hint>
-  <mat-error *ngIf="emailFormControl.hasError('phone Number') && !emailFormControl.hasError('required')">
-    Please enter a valid phone Number
-  </mat-error>
-  <mat-error *ngIf="emailFormControl.hasError('required')">
-    Phone Number is <strong>required</strong>
-  </mat-error>
-</mat-form-field>
-</div>
--->
 

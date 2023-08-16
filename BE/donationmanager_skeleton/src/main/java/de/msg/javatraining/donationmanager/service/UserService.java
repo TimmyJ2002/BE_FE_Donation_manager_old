@@ -1,6 +1,7 @@
 package de.msg.javatraining.donationmanager.service;
 
 import de.msg.javatraining.donationmanager.config.security.WebSecurityConfig;
+import de.msg.javatraining.donationmanager.exception.*;
 import de.msg.javatraining.donationmanager.persistence.model.DTOs.UserDTO;
 import de.msg.javatraining.donationmanager.persistence.model.Role;
 import de.msg.javatraining.donationmanager.persistence.model.User;
@@ -8,10 +9,12 @@ import de.msg.javatraining.donationmanager.persistence.repository.UserRepository
 import de.msg.javatraining.donationmanager.persistence.repository.impl.RoleRepositoryInterfaceImpl;
 import jdk.jshell.spi.ExecutionControl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import de.msg.javatraining.donationmanager.persistence.model.ERole;
+
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -30,11 +33,13 @@ public class UserService {
     @Autowired
     private RoleRepositoryInterfaceImpl roleRepositoryInterface;
 
+    @Autowired
+    private JavaMailSender javaMailSender;
 
 
-    public User createUser(UserDTO userDTO){
+
+    public User createUser(UserDTO userDTO) throws IllegalArgumentException{
         validateUserInput(userDTO);
-
 
         //Converts userDto to user
         User user = mapUserDTOToUser(userDTO);
@@ -48,9 +53,9 @@ public class UserService {
         String initialPassword = generateInitialPassword();
         user.setPassword(initialPassword);
 
-        //Send email
-       // sendWelcomeEmail(user.getEmail(), initialPassword);
-
+        System.out.println("ok");
+        sendWelcomeEmail(user.getEmail(), initialPassword);
+        System.out.println("nu ok");
         //initial login count 0 & is_active status true
         user.setLoginCount(0);
         user.setActive(true);
@@ -58,9 +63,19 @@ public class UserService {
         List<Role> roles = processRoles(userDTO.getRoles());
         user.setRoles(roles);
 
-
-
         return userRepository.save(user);
+    }
+
+    private void sendWelcomeEmail(String email, String initialPassword) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(email);
+        mailMessage.setSubject("Welcome to Donation Manager");
+        mailMessage.setText("Welcome to our application, Now your personal information will be stolen and a clone will replace you in the society! Your initial password is: " + initialPassword);
+        try {
+            javaMailSender.send(mailMessage);
+        }catch (MailException e){
+            System.err.println("Error sending email:" + e);
+        }
     }
 
 
@@ -75,7 +90,7 @@ public class UserService {
                     roles.add(role);
                 }
             } catch (IllegalArgumentException e) {
-                // Handle invalid role name
+                System.err.println("Something wrong with setting the roles");
             }
         }
         return roles;
@@ -106,7 +121,21 @@ public class UserService {
 
 
 
-    private void validateUserInput(UserDTO userDTO) {
+    private boolean validateUserInput(UserDTO userDTO) {
+        // Check if email is already existing
+        boolean isEmailExisting = userRepository.existsByEmail(userDTO.getEmail());
+        if (isEmailExisting) {
+            throw new EmailAlreadyExistsException("Email already exists in the database");
+        }
+
+        // Check if mobile number is already existing
+        boolean isMobileNumberExisting = userRepository.existsByMobileNumber(userDTO.getMobileNumber());
+        if (isMobileNumberExisting) {
+            throw new MobileNumberAlreadyExistsException("Mobile number already exists in the database");
+        }
+
+        // All checks passed
+        return true;
 
     }
     //TODO: implement method
