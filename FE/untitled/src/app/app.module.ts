@@ -21,6 +21,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatListModule} from "@angular/material/list";
 import {MatButtonModule} from "@angular/material/button";
 import { DeleteDonatorComponent } from './donator/components/delete-donator/delete-donator.component';
+import { DonationReportingComponent } from './donation/donation-reporting/donation-reporting.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { DeleteDonatorComponent } from './donator/components/delete-donator/dele
     UserChangePasswordComponent,
     LogoutComponent,
     DeleteDonatorComponent,
+    DonationReportingComponent,
     // UserDetailsComponent,
   ],
   imports: [

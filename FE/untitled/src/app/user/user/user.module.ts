@@ -4,13 +4,20 @@ import {UserListComponent} from "../components/user-list/user-list.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UserRoutingModule} from "../user-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-import {AppModule} from "../../app.module";
+import {UserCreationComponent} from "../components/user-creation/user-creation.component";
+import {UserChangePasswordComponent} from "../components/user-change-password/user-change-password.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+
 
 
 
 @NgModule({
   declarations: [
-    UserListComponent
+    UserListComponent,
+    UserCreationComponent,
+    UserChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -18,10 +25,16 @@ import {AppModule} from "../../app.module";
     HttpClientModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    AppModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+
+
   ],
   exports: [
-    UserListComponent
+    UserListComponent,
+    UserCreationComponent,
+    UserChangePasswordComponent
   ]
 })
 export class UserModule { }
