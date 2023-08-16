@@ -49,7 +49,6 @@ public class DonatorController {
     }
     @PostMapping("/donator/delete")
     public void deleteDonator(@RequestBody Donator c){
-        c = donatorService.findById(Math.toIntExact(c.getId()));
         donatorService.specialDeleteDonator(c);
     }
 }
