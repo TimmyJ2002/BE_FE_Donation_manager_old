@@ -53,8 +53,11 @@ public class AuthController {
 
     if (userDetails.getLoginCount() == -1) {
       return ResponseEntity.status(HttpStatus.OK)
-              .body("{\"message\": \"Password change required\"}");
+              .body("{\"message\": \"Password change required\", \"loginCount\": -1}");
     }
+
+
+    System.out.println(userDetails.getUsername() + " " + userDetails.getEmail());
     String jwt = jwtUtils.generateJwtToken(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
@@ -79,13 +82,14 @@ public class AuthController {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"Password change failed\"}");
   }
 
+
   @PutMapping("/update-login-count")
   public ResponseEntity<String> updateLoginCount(
           @RequestParam Long userId,
           @RequestParam int newLoginCount
   ) {
     userService.updateLoginCount(userId, newLoginCount);
-    return ResponseEntity.ok("{\"message\": \"Login count updated successfully\"}");
+    return ResponseEntity.ok("Login count updated successfully");
   }
 
   @PostMapping("/logout")
@@ -104,6 +108,5 @@ public class AuthController {
     System.out.println(jwtUtils.revokedTokens);
     return ResponseEntity.ok("{\"message\": \"Logged out successfully\"}");
   }
-
 
 }

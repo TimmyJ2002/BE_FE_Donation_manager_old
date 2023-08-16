@@ -54,31 +54,31 @@ public class User {
 	private List<Role> roles;
 
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(	name = "user_campaign",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "campaign_id"))
-	private List<Campaign> campaigns;
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(	name = "user_campaign",
+//			joinColumns = @JoinColumn(name = "user_id"),
+//			inverseJoinColumns = @JoinColumn(name = "campaign_id"))
+//	private List<Campaign> campaigns;
 
-	@OneToMany(
-			cascade = CascadeType.ALL,
-			orphanRemoval = true,
-			mappedBy = "createdBy"
-	)
-	private List<Donation> donationListCreated;
+//	@OneToMany(
+//			cascade = CascadeType.ALL,
+//			orphanRemoval = true,
+//			mappedBy = "createdBy"
+//	)
+//	private List<Donation> donationListCreated;
+//
+//	@OneToMany(
+//			cascade = CascadeType.ALL,
+//			orphanRemoval = true,
+//			mappedBy = "approvedBy"
+//	)
+//	private List<Donation> donationListApproved;
 
-	@OneToMany(
-			cascade = CascadeType.ALL,
-			orphanRemoval = true,
-			mappedBy = "approvedBy"
-	)
-	private List<Donation> donationListApproved;
-
-	@OneToMany(
-			cascade = CascadeType.ALL,
-			orphanRemoval = true,
-			mappedBy = "notificationReceiver"
-	) 	private List<Notification> notifications;
+//	@OneToMany(
+//			cascade = CascadeType.ALL,
+//			orphanRemoval = true,
+//			mappedBy = "notificationReceiver"
+//	) 	private List<Notification> notifications;
 
 	public User() {
 	}
@@ -100,10 +100,10 @@ public class User {
 		this.isActive = isActive;
 		this.loginCount = loginCount;
 		this.roles = roles;
-		this.campaigns = campaigns;
-		this.donationListCreated = donationListCreated;
-		this.donationListApproved = donationListApproved;
-		this.notifications = notifications;
+//		this.campaigns = campaigns;
+//		this.donationListCreated = donationListCreated;
+//		this.donationListApproved = donationListApproved;
+//		this.notifications = notifications;
 	}
 
 	public Long getId() {
@@ -184,34 +184,34 @@ public class User {
 		this.loginCount = loginCount;
 	}
 
-	public List<Campaign> getCampaigns() {
-		return campaigns;
-	}
+//	public List<Campaign> getCampaigns() {
+//		return campaigns;
+//	}
+//
+//	public void setCampaigns(List<Campaign> campaigns) {
+//		this.campaigns = campaigns;
+//	}
 
-	public void setCampaigns(List<Campaign> campaigns) {
-		this.campaigns = campaigns;
-	}
+//	public List<Donation> getDonationListCreated() {
+//		return donationListCreated;
+//	}
+//	public void setDonationListCreated(List<Donation> donationListCreated) {
+//		this.donationListCreated = donationListCreated;
+//	}
+//
+//	public List<Donation> getDonationListApproved() {
+//		return donationListApproved;
+//	}
+//
+//	public void setDonationListApproved(List<Donation> donationListApproved) {
+//		this.donationListApproved = donationListApproved;
+//	}
 
-	public List<Donation> getDonationListCreated() {
-		return donationListCreated;
-	}
-	public void setDonationListCreated(List<Donation> donationListCreated) {
-		this.donationListCreated = donationListCreated;
-	}
-
-	public List<Donation> getDonationListApproved() {
-		return donationListApproved;
-	}
-
-	public void setDonationListApproved(List<Donation> donationListApproved) {
-		this.donationListApproved = donationListApproved;
-	}
-
-	public List<Notification> getNotifications() {
-		return notifications;
-	}
-
-	public void setNotifications(List<Notification> notifications) {
-		this.notifications = notifications;
-	}
+//	public List<Notification> getNotifications() {
+//		return notifications;
+//	}
+//
+//	public void setNotifications(List<Notification> notifications) {
+//		this.notifications = notifications;
+//	}
 }
